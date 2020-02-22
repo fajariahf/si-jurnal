@@ -31,7 +31,7 @@
                                 <td><span>Email</span></td>
                                 <td><span class="h5"><?= $user['email'];?></span></td>
                             </tr>
-                            <!-- <tr>
+                            <tr>
                                 <td><span>Pendidikan Tertinggi</span></td>
                                 <td><span class="h5"><?= $user['pendidikan_tertinggi'];?></span></td>
                             </tr>
@@ -58,7 +58,7 @@
                             <tr>
                                 <td><span>Unit Kerja</span></td>
                                 <td><span class="h5"><?= $user['unit_kerja'];?></span></td>
-                            </tr> -->
+                            </tr>
                             
                             
                         </tbody>
@@ -66,9 +66,10 @@
                     </table>
 					<h3 class="card-title"><?= $user['role_name'];?></h3><br>
                     <p class="card-text"><small class="text-muted">Member since: <?= date('d F Y', $user['date_created']);?></small></p>
-                    <div class="col-md-5">
+				
+				<div class="col-md-5">
 					<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd">
-						<a href="<?= base_url();?>Operator/edit_profil/<?php echo $_SESSION['id_user']?>" type="button" class="nav-link active" >
+						<a href="<?= base_url();?>Reviewer/edit_profil/<?php echo $_SESSION['id_user']?>" type="button" class="nav-link active" >
 						<i class="fas fa-user-edit"> Edit Profile</i>
 						</a>
 					</div>
@@ -80,7 +81,6 @@
         </div>				
 	</div>		
 </div>
-
 
 
 <script type="text/javascript">
@@ -102,10 +102,5 @@ $('#editRowButton').click(function() {
 	$('#editRowModal').modal('hide');
 });
 
-function sweet (){
-    swal("Data baru berhasil disimpan!", {
-	buttons: false,
-	timer: 5000,
-    });
-}
+
 </script>

@@ -52,4 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['http://localhost/SI-JURNALTEKKOM/(:num)']['GET'] = 'Dosen/halaman_jurnal/$1';
+$route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Dosen/halaman_jurnal/$1';
+
+//===REVIEWER AREA===//
+$route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Reviewer/halaman_jurnal/$1';
+$route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Reviewer/give_nilai/$1';
+$route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Reviewer/save_nilai/$1';

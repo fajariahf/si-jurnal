@@ -13,7 +13,7 @@
                         </a>
                     </div>
     
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                         <form action="<?= base_url();?>Dosen/search" method="post">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -24,7 +24,7 @@
                                 <input type="text" class="form-control" placeholder="Search ..." name="keyword" id="keyword" autocomplete="off">
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
 
                 <div class="card-body">
@@ -37,7 +37,6 @@
                                 <tr>
                                     <td align="center">No.</td>
                                     <td align="center">Id Jurnal</td>
-                                    <td align="center">Id Dosen</td>
                                     <td align="center">NIP Penulis</td>
                                     <td align="center">Nama Jurnal</td>
                                     <td align="center">Judul</td>
@@ -59,8 +58,7 @@
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
                                     <td align="center"><?php echo $p->id_jurnal; ?></td>
-                                    <td align="center"><?php echo $p->id; ?></td>
-                                    <td align="center"><?php echo $p->nip_penulis; ?></td>
+                                    <td align="center"><?php echo $p->nip; ?></td>
                                     <td align="center"><?php echo $p->nama_jurnal; ?></td>
                                     <td align="center"><?php echo $p->judul_jurnal; ?></td>
                                     <td align="center"><?php echo $p->ISSN; ?></td>
@@ -73,7 +71,7 @@
                                     <td align="center"><?php echo $p->file_jurnal; ?></td>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="<?= base_url();?>Dosen/tambah_penulis/<?php echo $p->id_jurnal; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Tambah Penulis">
+                                            <a href="<?= base_url();?>Dosen/halaman_penulis" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Tambah Penulis">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                             <a href="<?php echo base_url();?>Dosen/download/<?php echo $p->file_jurnal; ?>" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Download Jurnal">
@@ -82,14 +80,13 @@
                                             <a href="<?= base_url();?>Dosen/edit_jurnal/<?php echo $p->id_jurnal; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Data Jurnal">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a onclick="deleteConfirm('<?= base_url();?>Dosen/jurnal_delete/<?php echo $p->id_jurnal; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Hapus Jurnal">
+                                            <a onclick="deleteConfirm('<?= base_url();?>Dosen/delete/<?php echo $p->id_jurnal; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Hapus Jurnal">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                             </button>                                                        
                                         </div>
                                     </td>
                                 </tr>
-                                    <!-- <a href="<?php echo base_url('Dosen/halaman_jurnal/'.$p->id) ?>"></a> -->
 
                                     <?php } ?>
                                 </tbody>

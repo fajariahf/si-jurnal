@@ -69,7 +69,7 @@
 				
 				<div class="col-md-5">
 					<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd">
-						<a href="<?= base_url();?>Dosen/edit_profil/<?php echo $_SESSION['id']?>" type="button" class="nav-link active" >
+						<a href="<?= base_url();?>Dosen/edit_profil/<?php echo $_SESSION['id_user']?>" type="button" class="nav-link active" >
 						<i class="fas fa-user-edit"> Edit Profile</i>
 						</a>
 					</div>

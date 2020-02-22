@@ -30,9 +30,9 @@
                             <div class="col-10">
                                 <input readonly class="form-control required" type="search" value="<?= $judul_jurnal?>" name="judul_jurnal" id="example-search-input">
 
-                                <input class="form-control required" type="hidden" value="<?= $_SESSION['id']?>" name="id" id="example-text-input">
+                                <input class="form-control required" type="hidden" value="<?= $_SESSION['id_user']?>" name="id_user" id="example-text-input">
                             
-                                <input class="form-control required" type="hidden" value="<?= $nip_penulis?>" name="nip_penulis" id="example-search-input">
+                                <!-- <input class="form-control required" type="hidden" value="<?= $nip?>" name="nip" id="example-search-input"> -->
                                                    
                                 <input class="form-control required" type="hidden" value="<?= $nama_jurnal?>" name="nama_jurnal" id="example-search-input">
                             
@@ -65,29 +65,49 @@
                         <div class="form-group row">
                             <label for="example-search-input" class="col-2 col-form-label">Nip Penulis</label>
                             <div class="col-10">
-                            <input required type="search" class="form-control" id="nip_penulis" name="nip_penulis" placeholder="Nip Penulis">
-                            <?= form_error('nip_penulis','<small class="text-danger pl-3">','</small>');?>
+                            <input required type="search" class="form-control" id="nip" name="nip" placeholder="Nip Penulis">
+                            <?= form_error('nip','<small class="text-danger pl-3">','</small>');?>
                             </div>
                         </div>
 
                         <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Status Penulis</label>
+                            <div class="col-10">
+                            <select required class="form-control form-control" name="stat_penulis" id="example-search-input"> -->
+                                    <option></option>
+                                    <!-- <option>P1</option> -->
+                                    <option>P2</option>
+                                    <option>P3</option>
+                                    <option>P4</option>
+                                    <option>P5</option>
+                                    <option>P6</option>
+                                    <option>P7</option>
+                                    <option>P8</option>
+                                    <option>P9</option>
+                                    <option>P10</option>
+                                </select>
+                                <?= form_error('stat_penulis','<small class="text-danger pl-3">','</small>');?>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group row">
                             <label for="wint1" class="col-2 col-form-label">File Jurnal</label>
                             <div class="col-10">
                                 <input required type="file" class="form-control required" class="btn btn-primary" value="<?= $file_jurnal?>" name="file_jurnal" id="wint1" >
                                 <span class="text-muted"><a target="_blank" href="<?php echo base_url();?>assets/file/<?=$file_jurnal?>"><?php echo $file_jurnal?></span></a>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-2 ml-auto mr-auto">
-                                        <div class="form-button-action">
-                                        <button type="submit" class="btn btn-primary">
-                                            <span class="btn-label">
-                                                <i class="fa fa-check"></i>
-                                            </span>
-                                            Tambah
-                                        </button>
-                                        </div> 
-                                    </div>
+                            <div class="form-button-action">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-label">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                                Tambah
+                            </button>
+                            </div> 
+                        </div>
                             
                             <!-- <div class="col-md-4 ml-auto mr-auto">
                                 <div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd">

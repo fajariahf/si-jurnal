@@ -137,9 +137,9 @@ class Operator extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function user_delete($id)
+	public function user_delete($id_user)
 	{
-		$this->User_model->user_delete_info($id);
+		$this->User_model->user_delete_info($id_user);
 		redirect('Operator/index');
 	}
 
@@ -147,12 +147,12 @@ class Operator extends CI_Controller {
 	{
 		$data['judul'] 		= 'Halaman Edit Data User';
 		$data['user'] 		= $this->User_model->user();
-		$data_user			= $this->User_model->getUser("where id = '$kode'")->result_array();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
 		
 		$data				= array(
 			'judul'					=> 'Halaman Edit Data User',
-			'kode'					=> $data_user[0]['id'],
-			'id'					=> $data_user[0]['id'],
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
 			'name'					=> $data_user[0]['name'],	
@@ -172,7 +172,7 @@ class Operator extends CI_Controller {
 	public function user_save_edit()
 	{
 			$kode					= $this->input->post('kode');
-			$id						= $this->input->post('id');
+			$id_user				= $this->input->post('id_user');
 			$nip					= $this->input->post('nip');
 			$image					= $this->input->post('image');
 			$name					= $this->input->post('name');
@@ -182,7 +182,7 @@ class Operator extends CI_Controller {
 			$date_created			= time();
 
 			$data = array(
-				'id'				=> $id,
+				'id_user'			=> $id_user,
 				'nip'				=> $nip,
 				'image'				=> $image,
 				'name'				=> $name,
@@ -191,7 +191,7 @@ class Operator extends CI_Controller {
 				'is_active'			=> $is_active,
 				'date_created' 		=> time(),
 			);
-	$this->User_model->updatedata('user', $data, array('id' => $kode));
+	$this->User_model->updatedata('user', $data, array('id_user' => $kode));
 				redirect('Operator/index');
 	}
 
@@ -211,12 +211,12 @@ class Operator extends CI_Controller {
 		$data['judul'] 		= 'Halaman Edit Profil';
 		$data['user'] 		= $this->User_model->user();
 		// $data['user'] 		= $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
-		$data_user			= $this->User_model->getUser("where id = '$kode'")->result_array();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
 		
 		$data				= array(
 			'judul'					=> 'Halaman Edit Profil',
-			'kode'					=> $data_user[0]['id'],
-			'id'					=> $data_user[0]['id'],
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
 			'name'					=> $data_user[0]['name'],	
@@ -240,7 +240,7 @@ class Operator extends CI_Controller {
 	public function profil_save_edit()
 	{
 		$kode					= $this->input->post('kode');
-		$id						= $this->input->post('id');
+		$id_user				= $this->input->post('id_user');
 		$nip					= $this->input->post('nip');
 		$name					= $this->input->post('name');
 		$email					= $this->input->post('email');
@@ -253,7 +253,7 @@ class Operator extends CI_Controller {
 		$jurusan				= $this->input->post('jurusan');
 		$unit_kerja				= $this->input->post('unit_kerja');
 
-		$this->db->where('id',$kode);
+		$this->db->where('id_user',$kode);
 			$query	= $this->db->get('user');
 			$row	= $query->row();
 			
@@ -287,7 +287,7 @@ class Operator extends CI_Controller {
 				}
 
 				$data = array(
-					'id'					=> $id,
+					'id_user'				=> $id_user,
 					'nip'					=> $nip,
 					'name'					=> $name,
 					'email'					=> $email,

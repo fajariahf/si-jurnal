@@ -49,6 +49,12 @@
 				</a>
 			</li>
 			<li class="nav-item">
+				<a href="<?= base_url(); ?>Dosen/halaman_penulis">
+				<i class="flaticon-user-4"></i>
+					<p>Halaman Penulis Jurnal</p>
+				</a>
+			</li>
+			<li class="nav-item">
 				<a href="<?= base_url(); ?>Dosen/halaman_penilaian">
 					<i class="flaticon-pen"></i>
 					<p>Halaman Penilaian</p>

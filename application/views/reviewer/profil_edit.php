@@ -12,13 +12,12 @@
                                 <h4 class="card-title">Form Edit Profil</h4>
                                 <br>
                                 <h6 class="card-subtitle"></h6>
-                                <form action="<?php echo base_url();?>Admin/profil_save_edit" enctype="multipart/form-data" method="POST"class="tab-wizard vertical wizard-circle m-t-40">
+                                <form action="<?php echo base_url();?>Reviewer/profil_save_edit" enctype="multipart/form-data" method="POST"class="tab-wizard vertical wizard-circle m-t-40">
                                    <div class="form-group row">
                                         <label for="example-text-input" class="col-2 col-form-label">Id</label>
                                         <div class="col-10">
                                             <input type="hidden" name="kode" value="<?=$kode ?>" />
                                             <input readonly class="form-control" type="text" value="<?php echo $_SESSION['id_user']?>" name="id_user" id="example-text-input">
-                                            <!-- <input type="hidden" class="form-control" type="text" value="3" name="status" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -30,7 +29,7 @@
                                     <div class="form-group row">
                                         <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                                         <div class="col-10">
-                                            <input class="form-control required" type="search" value="<?= $name?>" name="name" id="example-search-input">
+                                            <input required class="form-control required" type="search" value="<?= $name?>" name="name" id="example-search-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -40,9 +39,84 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Pendidikan Tertinggi</label>
+                                        <div class="col-10">
+                                            <select class="form-control form-control" value="<?= $pendidikan_tertinggi?>" name="pendidikan_tertinggi" id="example-search-input">
+                                                <option></option>
+                                                <option>S1</option>
+                                                <option>S2</option>
+                                                <option>S3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Pangkat</label>
+                                        <div class="col-10">
+                                            <input class="form-control required" type="search" value="<?= $pangkat?>" name="pangkat" id="example-search-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Gol. Ruang</label>
+                                        <div class="col-10">
+                                            <input class="form-control required" type="search" value="<?= $gol_ruang?>" name="gol_ruang" id="example-search-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Jabatan Fungsional</label>
+                                        <div class="col-10">
+                                            <input class="form-control required" type="search" value="<?= $jab_fungsional?>" name="jab_fungsional" id="example-search-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Fakultas</label>
+                                        <div class="col-10">
+                                            <select class="form-control form-control" value="<?= $fakultas?>" name="fakultas" id="example-search-input">
+                                                <!-- <option></option> -->
+                                                <option>Teknik</option>
+                                                <!-- <option>Hukum</option>
+                                                <option>Ekonomi dan Bisnis</option>
+                                                <option>Ilmu Budaya dan Bahasa</option>
+                                                <option>Kesehatan Masyarakat</option>
+                                                <option>Kedokteran</option>
+                                                <option>Pertanian dan Peternakan</option>
+                                                <option>Perikanan dan Ilmu Kelautan</option>
+                                                <option>Sains dan Matematika</option>
+                                                <option>Ilmu Sosial dan Ilmu Politik</option>
+                                                <option>Psikologi</option>
+                                                <option>Sekolah Vokasi</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Departemen</label>
+                                        <div class="col-10">
+                                            <select class="form-control form-control" value="<?= $jurusan?>" name="jurusan" id="example-search-input">
+                                                <!-- <option></option> -->
+                                                <option>Teknik Komputer</option>
+                                                <!-- <option>Teknik Sipil</option>
+                                                <option>Teknik Arsitektur</option>
+                                                <option>Teknik Kimia</option>
+                                                <option>Teknik Geodesi</option>
+                                                <option>Teknik Geologi</option>
+                                                <option>Teknik Perkapalan</option>
+                                                <option>Teknik Mesin</option>
+                                                <option>Teknik Elektro</option>
+                                                <option>Teknik Lingkungan</option>
+                                                <option>Teknik Perencanaan Wilayah dan Kota</option>
+                                                <option>Teknik Industri</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-2 col-form-label">Unit Kerja</label>
+                                        <div class="col-10">
+                                            <input class="form-control required" type="search" value="<?= $unit_kerja?>" name="unit_kerja" id="example-search-input">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="wint1" class="col-2 col-form-label">Foto Profil</label>
                                         <div class="col-10">
-                                            <input required type="file" class="form-control required" class="btn btn-primary" value="<?php echo $image?>" name="image" id="wint1" >
+                                            <input type="file" class="form-control required" class="btn btn-primary" value="<?php echo $image?>" name="image" id="wint1" >
                                             <span class="text-muted"><a target="_blank" href="<?php echo base_url();?>assets/img/profile/<?=$image?>"><?php echo $image?></span></a>
                                         </div>
                                     </div>

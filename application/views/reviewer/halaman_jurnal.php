@@ -6,14 +6,14 @@
                 <div class="card-header">
     
                     <div class="col-lg-6">
-                        <form action="<?= base_url();?>Reviewer/search" method="post">
+                        <form action="<?= base_url();?>Reviewer/search_jurnal" method="post">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-search pr-1" id="tombolCari">
                                         <i class="fa fa-search search-icon-center"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Search ..." name="keyword" id="keyword" autocomplete="off">
+                                <input type="text" class="form-control" placeholder="Masukkan ID Jurnal ..." name="keyword" id="keyword" autocomplete="off">
                                 </div>
                             </div>
                         </form>
@@ -43,7 +43,7 @@
                                     <?php foreach ($getData as $p) { ?>
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
-                                    <td align="center"><?php echo $p->id_dosen; ?></td>
+                                    <td align="center"><?php echo $p->id_user; ?></td>
                                     <td align="center"><?php echo $p->id_jurnal; ?></td>
                                     <td align="center"><?php echo $p->judul_jurnal; ?> </td>
                                     <td align="center"><?php echo $p->ISSN; ?></td>

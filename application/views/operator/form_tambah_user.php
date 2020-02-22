@@ -23,7 +23,7 @@
                 <div class="col-10">
                 <input required type="search" class="form-control" id="nip" name="nip" placeholder="NIP">
                 <input id="image" name="image" type="hidden" value="default.jpg">
-                <input class="form-control" type="hidden" name="id" id="example-text-input">
+                <input class="form-control" type="hidden" name="id_user" id="example-text-input">
                 <?= form_error('nip','<small class="text-danger pl-3">','</small>');?>
                 </div>
             </div>

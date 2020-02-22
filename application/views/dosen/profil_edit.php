@@ -17,7 +17,7 @@
                                         <label for="example-text-input" class="col-2 col-form-label">Id</label>
                                         <div class="col-10">
                                             <input type="hidden" name="kode" value="<?=$kode ?>" />
-                                            <input readonly class="form-control" type="text" value="<?php echo $_SESSION['id']?>" name="id" id="example-text-input">
+                                            <input readonly class="form-control" type="text" value="<?php echo $_SESSION['id_user']?>" name="id_user" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">

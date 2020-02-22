@@ -22,8 +22,7 @@ class Dosen extends CI_Controller {
     public function index()
 	{
 		$data['judul'] 		= 'Dashboard Dosen';
-		$data['getView']	= $this->Jurnal_model->view();
-		// $data['getView']	= $this->Jurnal_model->jurnal();
+		$data['getView']	= $this->Jurnal_model->view_jurnal();
 
 		$this->load->view('dosen/header_dosen', $data);
 		$this->load->view('dosen/sidebar_dosen');
@@ -33,13 +32,13 @@ class Dosen extends CI_Controller {
 
 	public function search()
 	{
-		$data['judul'] 			= 'Halaman Jurnal Dosen';
-		$keyword 				= $this->input->post('keyword');
-		$data['getDataJurnal'] 	= $this->Jurnal_model->search($keyword);
+		$data['judul'] 		= 'Halaman Jurnal';
+		$keyword 			= $this->input->post('keyword');
+		$data['getView'] 	= $this->Jurnal_model->search($keyword);
 
 		$this->load->view('dosen/header_dosen', $data);
 		$this->load->view('dosen/sidebar_dosen');
-		$this->load->view('dosen/halaman_jurnal', $data);
+		$this->load->view('dosen/dashboard_dosen', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -88,7 +87,7 @@ class Dosen extends CI_Controller {
 	public function halaman_jurnal()
 	{
 		$data['judul'] 			= 'Halaman Jurnal Dosen';
-		$data['getDataJurnal']	= $this->Jurnal_model->view_penulisjurnal();
+		$data['getDataJurnal']	= $this->Jurnal_model->view_jurnal();
 
 		$this->load->view('dosen/header_dosen', $data);
 		$this->load->view('dosen/sidebar_dosen');
@@ -99,7 +98,7 @@ class Dosen extends CI_Controller {
 	public function upload_jurnal()
 	{
 		$data['judul'] 		= 'Halaman Jurnal Dosen';
-
+		
 		$this->load->view('dosen/header_dosen', $data);
 		$this->load->view('dosen/sidebar_dosen');
 		$this->load->view('dosen/form_upload_jurnal', $data);
@@ -110,8 +109,9 @@ class Dosen extends CI_Controller {
 	{
 		
 		$data['id_jurnal']			= $this->input->post('id_jurnal',true);
-		$data['id']					= $this->input->post('id',true);
+		$data['id_user']			= $this->input->post('id_user',true);
 		$data['nip_penulis']		= $this->input->post('nip_penulis',true);
+		$data['stat_penulis']		= $this->input->post('stat_penulis',true);
 		$data['judul_jurnal']		= $this->input->post('judul_jurnal',true);
 		$data['nama_jurnal']		= $this->input->post('nama_jurnal',true);
 		$data['ISSN']				= $this->input->post('ISSN',true);
@@ -167,93 +167,6 @@ class Dosen extends CI_Controller {
 		$data = file_get_contents("assets/file/".$name);
 		force_download($name, $data);
 	}
-
-	public function tambah_penulis($kode = 0)
-	{
-		$data['getDataJurnal']	= $this->Jurnal_model->jurnal();
-		$data_jurnal			= $this->Jurnal_model->getJurnal("where id_jurnal = '$kode'")->result_array();
-		
-		$data				= array(
-			'judul'					=> 'Halaman Edit Jurnal',
-			'kode'					=> $data_jurnal[0]['id_jurnal'],
-			'id_jurnal'				=> $data_jurnal[0]['id_jurnal'],
-			'id'					=> $data_jurnal[0]['id'],
-			'judul_jurnal'			=> $data_jurnal[0]['judul_jurnal'],
-			'nip_penulis'			=> $data_jurnal[0]['nip_penulis'],
-			'nama_jurnal'			=> $data_jurnal[0]['nama_jurnal'],	
-			'ISSN'					=> $data_jurnal[0]['ISSN'],
-			'volume'				=> $data_jurnal[0]['volume'],	
-			'nomor'					=> $data_jurnal[0]['nomor'],	
-			'bulan'					=> $data_jurnal[0]['bulan'],
-			'tahun'					=> $data_jurnal[0]['tahun'],
-			'penerbit'				=> $data_jurnal[0]['penerbit'],
-			'DOI'					=> $data_jurnal[0]['DOI'],
-			'alamat_web_jurnal'		=> $data_jurnal[0]['alamat_web_jurnal'],
-			'alamat_web_artikel'	=> $data_jurnal[0]['alamat_web_artikel'],
-			'terindeks_di'			=> $data_jurnal[0]['terindeks_di'],
-			'status'				=> $data_jurnal[0]['status'],
-			'keterangan'			=> $data_jurnal[0]['keterangan'],
-			'file_jurnal'			=> $data_jurnal[0]['file_jurnal'],
-		);
-
-        $this->load->view('dosen/header_dosen', $data);
-		$this->load->view('dosen/sidebar_dosen');
-		$this->load->view('dosen/tambah_penulis', $data);
-		$this->load->view('templates/footer');	
-	}
-
-	public function tambah_penulis_save()
-	{
-		
-		$data['id_jurnal']			= $this->input->post('id_jurnal',true);
-		$data['id']					= $this->input->post('id',true);
-		$data['nip_penulis']		= $this->input->post('nip_penulis',true);
-		$data['judul_jurnal']		= $this->input->post('judul_jurnal',true);
-		$data['nama_jurnal']		= $this->input->post('nama_jurnal',true);
-		$data['ISSN']				= $this->input->post('ISSN',true);
-		$data['volume']				= $this->input->post('volume',true);
-		$data['nomor']				= $this->input->post('nomor',true);
-		$data['bulan']				= $this->input->post('bulan',true);
-		$data['tahun']				= $this->input->post('tahun',true);
-		$data['penerbit']			= $this->input->post('penerbit',true);
-		$data['DOI']				= $this->input->post('DOI',true);
-		$data['alamat_web_jurnal']	= $this->input->post('alamat_web_jurnal',true);
-		$data['alamat_web_artikel']	= $this->input->post('alamat_web_artikel',true);
-		$data['terindeks_di']		= $this->input->post('terindeks_di',true);
-		$data['status']				= $this->input->post('status',true);
-		$data['keterangan']			= $this->input->post('keterangan',true);
-		$data['file_jurnal']		= $_FILES['file_jurnal']['name'];
-		$data['date_created']		= time();
-
-
-		if($_FILES['file_jurnal']['name'] != ""){
-			$config['upload_path']          = 'assets/file';
-			$config['allowed_types']        = 'pdf';
-			$config['max_size']             = '5000';
-			$config['remove_space']			= false;
-			$config['overwrite']			= true;
-			$config['encrypt_name']			= false;
-			$config['max_width'] 			= '';
-			$config['max_height']			= '';
-			
-			$this->load->library('upload',$config);
-			$this->upload->initialize($config);
-			if(!$this->upload->do_upload('file_jurnal'))
-			{
-				print_r('Ukuran file terlalu besar. Maksimal 5 MB | Periksa Kembali File yang diupload');
-				exit();
-				}
-			else
-			{
-				$image = $this->upload->data();
-		}
-
-	}
-
-		$this->Jurnal_model->jurnal_save($data);
-		redirect('Dosen/halaman_jurnal');
-
-}
 
 	public function edit_jurnal($kode = 0)
 	{
@@ -371,8 +284,8 @@ class Dosen extends CI_Controller {
 	public function halaman_penilaian()
 	{
 		$data['judul'] 			= 'Halaman Penilaian Jurnal Dosen';
-		$data['getNilaiJurnal']	= $this->Jurnal_model->nilai_jurnal();
-		$data['sum']			= $this->Jurnal_model->get_total();
+		$data['getNilaiJurnal']	= $this->Nilai_model->nilai_jurnal();
+		$data['sum']			= $this->Nilai_model->get_total();
 
 		$this->load->view('dosen/header_dosen', $data);
 		$this->load->view('dosen/sidebar_dosen');
@@ -397,12 +310,12 @@ class Dosen extends CI_Controller {
 	{
 		$data['judul'] 		= 'Halaman Edit Profil';
 		$data['user'] 		= $this->User_model->user();
-		$data_user			= $this->User_model->getUser("where id = '$kode'")->result_array();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
 		
 		$data				= array(
 			'judul'					=> 'Halaman Edit Profil',
-			'kode'					=> $data_user[0]['id'],
-			'id'					=> $data_user[0]['id'],
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
 			'name'					=> $data_user[0]['name'],	
@@ -426,7 +339,7 @@ class Dosen extends CI_Controller {
 	public function profil_save_edit()
 	{
 		$kode					= $this->input->post('kode');
-		$id						= $this->input->post('id');
+		$id_user				= $this->input->post('id_user');
 		$nip					= $this->input->post('nip');
 		$name					= $this->input->post('name');
 		$email					= $this->input->post('email');
@@ -439,7 +352,7 @@ class Dosen extends CI_Controller {
 		$jurusan				= $this->input->post('jurusan');
 		$unit_kerja				= $this->input->post('unit_kerja');
 
-		$this->db->where('id',$kode);
+		$this->db->where('id_user',$kode);
 			$query	= $this->db->get('user');
 			$row	= $query->row();
 			
@@ -473,7 +386,7 @@ class Dosen extends CI_Controller {
 				}
 
 				$data = array(
-					'id'					=> $id,
+					'id_user'				=> $id_user,
 					'nip'					=> $nip,
 					'name'					=> $name,
 					'email'					=> $email,
@@ -487,7 +400,117 @@ class Dosen extends CI_Controller {
 					'unit_kerja'			=> $unit_kerja
 					);
 
-	  $this->User_model->updatedata('user',$data, array('id' => $kode));
+	  $this->User_model->updatedata('user',$data, array('id_user' => $kode));
 	  redirect('Dosen/profil');
 	}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+	// READ
+	public function halaman_penulis()
+		{
+			$data['judul'] 			= 'Halaman Penulis Jurnal';
+			$data['user']			= $this->Jurnal_model->get_Dosen();
+			$data['jurnal']			= $this->Jurnal_model->get_Penulis();
+			$data['jml_penulis']	= $this->Jurnal_model->countUser();
+
+			$this->load->view('dosen/header_dosen', $data);
+			$this->load->view('dosen/sidebar_dosen');
+			$this->load->view('dosen/halaman_penulis', $data);
+			$this->load->view('templates/footer');
+		}
+
+	public function tambah_penulis($kode = 0)
+	{
+		$data['judul'] 			= 'Halaman Tambah Penulis Jurnal';
+		// $data['penulis']		= $this->Jurnal_model->get_Penulis();
+		// $data['jml_penulis']	= $this->Jurnal_model->countUser();
+		$data['getDataJurnal']	= $this->Jurnal_model->jurnal();
+		$data_jurnal			= $this->Jurnal_model->getJurnal("where id_jurnal = '$kode'")->result_array();
+		
+		$data				= array(
+			'judul'					=> 'Halaman Tambah Penulis Jurnal',
+			'kode'					=> $data_jurnal[0]['id_jurnal'],
+			'id_jurnal'				=> $data_jurnal[0]['id_jurnal'],
+			'nip'					=> $data_jurnal[0]['nip'],
+			'stat_penulis'			=> $data_jurnal[0]['stat_penulis'],
+			'judul_jurnal'			=> $data_jurnal[0]['judul_jurnal'],	
+			'nama_jurnal'			=> $data_jurnal[0]['nama_jurnal'],	
+			'ISSN'					=> $data_jurnal[0]['ISSN'],
+			'volume'				=> $data_jurnal[0]['volume'],	
+			'nomor'					=> $data_jurnal[0]['nomor'],	
+			'bulan'					=> $data_jurnal[0]['bulan'],
+			'tahun'					=> $data_jurnal[0]['tahun'],
+			'penerbit'				=> $data_jurnal[0]['penerbit'],
+			'DOI'					=> $data_jurnal[0]['DOI'],
+			'alamat_web_jurnal'		=> $data_jurnal[0]['alamat_web_jurnal'],
+			'alamat_web_artikel'	=> $data_jurnal[0]['alamat_web_artikel'],
+			'terindeks_di'			=> $data_jurnal[0]['terindeks_di'],
+			'status'				=> $data_jurnal[0]['status'],
+			'keterangan'			=> $data_jurnal[0]['keterangan'],
+			// 'file_jurnal'			=> $data_jurnal[0]['file_jurnal'],
+		);
+
+
+		$this->load->view('dosen/header_dosen', $data);
+		$this->load->view('dosen/sidebar_dosen');
+		$this->load->view('dosen/tambah_penulis', $data);
+		$this->load->view('templates/footer');
+	}
+
+	
+	
+	public function tambah_penulis_save()
+	{
+		
+		$data['id_jurnal']			= $this->input->post('id_jurnal',true);
+		$data['id_user']			= $this->input->post('id_user',true);
+		$data['id_user']			= $this->input->post('id_user',true);
+		$data['stat_penulis']		= $this->input->post('stat_penulis',true);
+		$data['judul_jurnal']		= $this->input->post('judul_jurnal',true);
+		$data['nama_jurnal']		= $this->input->post('nama_jurnal',true);
+		$data['ISSN']				= $this->input->post('ISSN',true);
+		$data['volume']				= $this->input->post('volume',true);
+		$data['nomor']				= $this->input->post('nomor',true);
+		$data['bulan']				= $this->input->post('bulan',true);
+		$data['tahun']				= $this->input->post('tahun',true);
+		$data['penerbit']			= $this->input->post('penerbit',true);
+		$data['DOI']				= $this->input->post('DOI',true);
+		$data['alamat_web_jurnal']	= $this->input->post('alamat_web_jurnal',true);
+		$data['alamat_web_artikel']	= $this->input->post('alamat_web_artikel',true);
+		$data['terindeks_di']		= $this->input->post('terindeks_di',true);
+		$data['status']				= $this->input->post('status',true);
+		$data['keterangan']			= $this->input->post('keterangan',true);
+		$data['date_created']		= time();
+
+		
+		$this->Jurnal_model->penulis_save($data);
+		// $this->Jurnal_model->jurnal_save($data);
+		// $this->User_model->user_save($data);
+		redirect('Dosen/halaman_jurnal');
+
+	}
+
+	// // GET DATA USER BERDASARKAN JURNAL ID
+	// public function get_user_by_jurnal()
+	// {
+	// 	$id_jurnal	=$this->input->post('id_jurnal');
+	// 	$data		=$this->Jurnal_model->get_user_by_jurnal($id_jurnal)->result();
+	// 	foreach ($data as $result) {
+	// 		$value[] = (float) $result->id_user;
+	// 	}
+	// 	echo json_encode($value);
+	// }
+
+	// // //UPDATE
+	// // public function update()
+	// // {
+	// // 	$id = $this->input->post('edit_id',TRUE);
+	// // 	$jurnal = $this->input->post('jurnal_edit',TRUE);
+	// // 	$user = $this->input->post('user_edit',TRUE);
+	// // 	$this->Jurnal_model->update_jurnal($id,$jurnal,$user);
+	// // 	redirect('Dosen/halaman_penulis');
+	// // }
+
+	
 }

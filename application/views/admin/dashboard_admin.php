@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="col-lg-6">
-                    <form action="<?= base_url();?>Admin/search_index" method="post">
+                    <form action="<?= base_url();?>Admin/search" method="post">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button type="submit" class="btn btn-search pr-1" id="tombolCari">
@@ -128,7 +128,7 @@
                 <!-- end modal -->
 
                 <!-- table responsive -->
-                <div class="table">
+                <div class="table-responsive">
                     <div class="row">
                         <div class="col-12">
                             <table id="basic-datatables" class="table table-striped table-bordered">
@@ -150,7 +150,7 @@
                                     <?php foreach ($getuser as $p) { ?>
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
-                                    <td align="center"><?php echo $p->id; ?> </td>
+                                    <td align="center"><?php echo $p->id_user; ?> </td>
                                     <td align="center"><?php echo $p->nip; ?> </td>
                                     <td align="center"><?php echo $p->name; ?></td>
                                     <td align="center"><?php echo $p->email; ?></td>

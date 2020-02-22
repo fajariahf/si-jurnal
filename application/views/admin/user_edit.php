@@ -22,7 +22,7 @@
                                 <label for="example-search-input">ID User</label>
                                 <input type="hidden" name="kode" value="<?=$kode ?>" />
                                 <input type="hidden" class="form-control" type="text" value="3" name="status" id="example-text-input">
-                                <input readonly class="form-control required" type="search" value="<?= $id?>" name="id" id="example-search-input">
+                                <input readonly class="form-control required" type="search" value="<?= $id_user?>" name="id_user" id="example-search-input">
                             </div>
                             <div class="form-group">
                                 <label for="example-search-input">Nip</label>

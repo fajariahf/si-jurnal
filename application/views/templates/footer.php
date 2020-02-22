@@ -5,6 +5,11 @@
 	<script src="<?= base_url(); ?>assets/js/core/popper.min.js"></script>
 	<script src="<?= base_url(); ?>assets/js/core/bootstrap.min.js"></script>
 
+	
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.4.1.min.js');?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.bundle.js');?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-select.js');?>"></script>
+
 	<!-- jQuery UI -->
 	<script src="<?= base_url(); ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="<?= base_url(); ?>assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>

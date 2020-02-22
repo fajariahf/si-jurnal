@@ -22,7 +22,7 @@ class Reviewer extends CI_Controller {
     public function index()
 	{
 		$data['judul'] 		= 'Dashboard Reviewer';
-		$data['getView'] 	= $this->Jurnal_model->view();
+		$data['getView'] 	= $this->Nilai_model->view_nilai();
 
 		$this->load->view('reviewer/header_reviewer', $data);
 		$this->load->view('reviewer/sidebar_reviewer');
@@ -32,10 +32,33 @@ class Reviewer extends CI_Controller {
 	
 	public function nilai_delete($id_nilai)
 	{
-		$this->Jurnal_model->nilai_delete($id_nilai);
+		$this->Nilai_model->nilai_delete($id_nilai);
 		redirect('Reviewer/halaman_penilaian');
 	}
 	
+	public function search_index()
+	{
+		$data['judul'] 		= 'Halaman Jurnal';
+		$keyword 			= $this->input->post('keyword');
+		$data['getView'] 	= $this->Nilai_model->search_index($keyword);
+
+		$this->load->view('reviewer/header_reviewer', $data);
+		$this->load->view('reviewer/sidebar_reviewer');
+		$this->load->view('reviewer/dashboard_reviewer', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function search_jurnal()
+	{
+		$data['judul'] 		= 'Halaman Jurnal';
+		$keyword 			= $this->input->post('keyword');
+		$data['getData'] 	= $this->Nilai_model->search_jurnal($keyword);
+
+		$this->load->view('reviewer/header_reviewer', $data);
+		$this->load->view('reviewer/sidebar_reviewer');
+		$this->load->view('reviewer/halaman_jurnal', $data);
+		$this->load->view('templates/footer');
+	}
 	///////////////////////////// data user ///////////////////////////////////
 
 	public function operator()
@@ -83,124 +106,41 @@ class Reviewer extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	// public function give_nilai()
-	// {
-	// 	$data['judul'] 			= 'Halaman Jurnal Dosen';
-
-	// 	$this->load->view('reviewer/header_reviewer', $data);
-	// 	$this->load->view('reviewer/sidebar_reviewer');
-	// 	$this->load->view('reviewer/form_penilaian', $data);
-	// 	$this->load->view('templates/footer');
-	
-	// }
-
-	// public function nilai_save()
-	// {
-	// 	$data['id_nilai']				= $this->input->post('id_nilai',true);
-	// 	$data['id_jurnal']				= $this->input->post('id_jurnal',true);
-	// 	$data['id_reviewer']			= $this->input->post('id_reviewer',true);
-	// 	$data['stat_reviewer']			= $this->input->post('stat_reviewer',true);
-	// 	$data['kelengkapan_isi']		= $this->input->post('kelengkapan_isi',true);
-	// 	$data['ruanglingkup']			= $this->input->post('ruanglingkup',true);
-	// 	$data['kecukupan']				= $this->input->post('kecukupan',true);
-	// 	$data['kelengkapan_unsur']		= $this->input->post('kelengkapan_unsur',true);
-	// 	$data['keterangan']				= "Sudah dinilai";
-	// 	// $data['file_penilaian']			= $_FILES['file_penilaian']['name'];
-	// 	$data['date_created']			= time();
-
-
-	// 	// if($_FILES['file_jurnal']['name'] != ""){
-	// 	// 	$config['upload_path']          = 'assets/file';
-	// 	// 	$config['allowed_types']        = 'pdf';
-	// 	// 	$config['max_size']             = '5000';
-	// 	// 	$config['remove_space']			= false;
-	// 	// 	$config['overwrite']			= true;
-	// 	// 	$config['encrypt_name']			= false;
-	// 	// 	$config['max_width'] 			= '';
-	// 	// 	$config['max_height']			= '';
-			
-	// 	// 	$this->load->library('upload',$config);
-	// 	// 	$this->upload->initialize($config);
-	// 	// 	if(!$this->upload->do_upload('file_jurnal'))
-	// 	// 	{
-	// 	// 		print_r('Ukuran file terlalu besar. Maksimal 5 MB | Periksa Kembali File yang diupload');
-	// 	// 		exit();
-	// 	// 		}
-	// 	// 	else
-	// 	// 	{
-	// 	// 		$image = $this->upload->data();
-	// 	// }
-
-	// // }
-	// // $this->Jurnal_model->jurnal($data);
-	// $this->Jurnal_model->nilai_save($data);
-	// redirect('Reviewer/halaman_penilaian');
-
-	// }
-
-	public function give_nilai($kode = 0)
+	public function give_nilai()
 	{
-		$data['getDataJurnal']	= $this->Jurnal_model->jurnal();
-		$data_nilai			= $this->Jurnal_model->getNilai("where id_jurnal = '$kode'")->result_array();
-		
-		$data				= array(
-			'judul'					=> 'Halaman Upload Nilai Jurnal',
-			'kode'					=> $data_nilai[0]['id_nilai'],
-			'id_nilai'				=> $data_nilai[0]['id_nilai'],
-			'id_jurnal'				=> $data_nilai[0]['id_jurnal'],		
-			'id_reviewer'			=> $data_nilai[0]['id_reviewer'],
-			'stat_reviewer'			=> $data_nilai[0]['stat_reviewer'],	
-			'kelengkapan_isi'		=> $data_nilai[0]['kelengkapan_isi'],
-			'ruanglingkup'			=> $data_nilai[0]['ruanglingkup'],
-			'kecukupan'				=> $data_nilai[0]['kecukupan'],
-			'kelengkapan_unsur'		=> $data_nilai[0]['kelengkapan_unsur'],
-		);
+		$data['judul'] 			= 'Halaman Jurnal Dosen';
+		$data['jurnal'] 		= $this->Jurnal_model->jurnal();
+		$data['jurnal'] 		= $this->Nilai_model->nilai_jurnal();
 
-        $this->load->view('reviewer/header_reviewer', $data);
-		// $this->load->view('reviewer/sidebar_reviewer');
+		$this->load->view('reviewer/header_reviewer', $data);
+		$this->load->view('reviewer/sidebar_reviewer');
 		$this->load->view('reviewer/form_penilaian', $data);
-		$this->load->view('templates/footer');	
+		$this->load->view('templates/footer');
+	
 	}
-
 
 	public function nilai_save()
 	{
-		// $kode					= $this->input->post('kode');
-		$id_nilai				= $this->input->post('id_nilai');
-		$id_jurnal				= $this->input->post('id_jurnal');
-		$id_reviewer			= $this->input->post('id_reviewer');
-		$stat_reviewer			= $this->input->post('stat_reviewer');
-		$kelengkapan_isi		= $this->input->post('kelengkapan_isi');
-		$ruanglingkup			= $this->input->post('ruanglingkup');
-		$kecukupan				= $this->input->post('kecukupan');
-		$kelengkapan_unsur		= $this->input->post('kelengkapan_unsur');
-		$alamat_web_jurnal		= $this->input->post('alamat_web_jurnal');
+		$data['id_nilai']				= $this->input->post('id_nilai',true);
+		$data['id_jurnal']				= $this->input->post('id_jurnal',true);
+		$data['id_reviewer']			= $this->input->post('id_reviewer',true);
+		$data['stat_reviewer']			= $this->input->post('stat_reviewer',true);
+		$data['kelengkapan_isi']		= $this->input->post('kelengkapan_isi',true);
+		$data['ruanglingkup']			= $this->input->post('ruanglingkup',true);
+		$data['kecukupan']				= $this->input->post('kecukupan',true);
+		$data['kelengkapan_unsur']		= $this->input->post('kelengkapan_unsur',true);
+		// $data['keterangan']				= "Sudah dinilai";
+		$data['date_created']			= time();
 
-
-		$this->db->where('id_jurnal',$kode);
-			$query	= $this->db->get('nilai_jurnal');
-
-				$data = array(
-					'id_nilai'				=> $id_nilai,
-					'id_jurnal'				=> $id_jurnal,
-					'id_reviewer'			=> $id_reviewer,
-					'stat_reviewer'			=> $stat_reviewer,	
-					'kelengkapan_isi'		=> $kelengkapan_isi,
-					'ruanglingkup'			=> $ruanglingkup,
-					'kecukupan'				=> $kecukupan,
-					'kelengkapan_unsur'		=> $kelengkapan_unsur
-					);
-
-		$this->Jurnal_model->updatedata('nilai_jurnal',$data, array('id_nilai' => $kode));
-	  	redirect('Reviewer/halaman_penilaian');
+	$this->Nilai_model->nilai_save($data);
+	redirect('Reviewer/halaman_penilaian');
 	}
 
 	public function halaman_penilaian()
 	{
 		$data['judul'] 			= 'Halaman Penilaian Jurnal Dosen';
-		// $this->load->model('Jurnal_model');
-		$data['getNilaiJurnal']	= $this->Jurnal_model->nilai_jurnal();
-		$data['sum']			= $this->Jurnal_model->get_total();
+		$data['getNilaiJurnal']	= $this->Nilai_model->nilai_jurnal();
+		$data['sum']			= $this->Nilai_model->get_total();
 		
 		$this->load->view('reviewer/header_reviewer', $data);
 		$this->load->view('reviewer/sidebar_reviewer');
@@ -208,5 +148,126 @@ class Reviewer extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	
+	public function download()
+	{
+		$this->load->helper(array('url','download'));
+
+		$name = $this->uri->segment(3);
+		$data = file_get_contents("assets/file/".$name);
+		force_download($name, $data);
+	}
+
+
+	//////////////////////////// pengaturan ////////////////////////////
+
+	public function profil()
+	{
+		$data['judul'] 		= 'Halaman Profil';
+		$data['user'] 		= $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+		
+		$this->load->view('reviewer/header_reviewer', $data);
+		$this->load->view('reviewer/sidebar_reviewer');
+		$this->load->view('reviewer/profil', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function edit_profil($kode = 0)
+	{
+		$data['judul'] 		= 'Halaman Edit Profil';
+		$data['user'] 		= $this->User_model->user();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
+		
+		$data				= array(
+			'judul'					=> 'Halaman Edit Profil',
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
+			'nip'					=> $data_user[0]['nip'],
+			'image'					=> $data_user[0]['image'],	
+			'name'					=> $data_user[0]['name'],	
+			'email'					=> $data_user[0]['email'],	
+			'pendidikan_tertinggi'	=> $data_user[0]['pendidikan_tertinggi'],
+			'pangkat'				=> $data_user[0]['pangkat'],	
+			'gol_ruang'				=> $data_user[0]['gol_ruang'],	
+			'jab_fungsional'		=> $data_user[0]['jab_fungsional'],
+			'fakultas'				=> $data_user[0]['fakultas'],
+			'jurusan'				=> $data_user[0]['jurusan'],
+			'unit_kerja'			=> $data_user[0]['unit_kerja'],
+		);
+
+        $this->load->view('reviewer/header_reviewer', $data);
+		$this->load->view('reviewer/sidebar_reviewer');
+		$this->load->view('reviewer/profil_edit', $data);
+		$this->load->view('templates/footer');	
+	}
+
+
+	public function profil_save_edit()
+	{
+		$kode					= $this->input->post('kode');
+		$id_user				= $this->input->post('id_user');
+		$nip					= $this->input->post('nip');
+		$name					= $this->input->post('name');
+		$email					= $this->input->post('email');
+		$image					= $this->input->post('image');
+		$pendidikan_tertinggi	= $this->input->post('pendidikan_tertinggi');
+		$pangkat				= $this->input->post('pangkat');
+		$gol_ruang				= $this->input->post('gol_ruang');
+		$jab_fungsional			= $this->input->post('jab_fungsional');
+		$fakultas				= $this->input->post('fakultas');
+		$jurusan				= $this->input->post('jurusan');
+		$unit_kerja				= $this->input->post('unit_kerja');
+
+		$this->db->where('id_user',$kode);
+			$query	= $this->db->get('user');
+			$row	= $query->row();
+			
+			unlink(".assets/img/profile/$row->image");
+			if($_FILES['image']['name'] != ""){
+				$config['upload_path']          = 'assets/img/profile';
+				$config['allowed_types']        = 'jpeg|jpg|png|pdf';
+				$config['max_size']             = '2000';
+				$config['remove_space']			= true;
+				$config['overwrite']			= true;
+				$config['encrypt_name']			= false;
+				$config['max_width'] 			= '';
+				$config['max_height']			= '';
+				
+				$this->load->library('upload',$config);
+				$this->upload->initialize($config);
+				if(!$this->upload->do_upload('image'))
+				{
+					print_r('Ukuran file terlalu besar. Maksimal 2 MB');
+					exit();
+					}
+				else
+				{
+					$image = $this->upload->data();
+					if($image['file_name'])
+					{
+					$data['file'] = $image['file_name'];
+					}
+					$image = $data['file'];
+					}
+				}
+
+				$data = array(
+					'id_user'				=> $id_user,
+					'nip'					=> $nip,
+					'name'					=> $name,
+					'email'					=> $email,
+					'image'					=> $image,
+					'pendidikan_tertinggi'	=> $pendidikan_tertinggi,
+					'pangkat'				=> $pangkat,
+					'gol_ruang'				=> $gol_ruang,
+					'jab_fungsional'		=> $jab_fungsional,
+					'fakultas'				=> $fakultas,
+					'jurusan'				=> $jurusan,
+					'unit_kerja'			=> $unit_kerja
+					);
+
+	  $this->User_model->updatedata('user',$data, array('id_user' => $kode));
+	  redirect('Reviewer/profil');
+	}
+
+
 }

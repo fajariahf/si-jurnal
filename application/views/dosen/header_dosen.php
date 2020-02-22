@@ -21,6 +21,18 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/atlantis.min.css">
+	
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 	<div class="wrapper">
@@ -54,7 +66,7 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="<?=  base_url('assets/img/profile/').$_SESSION['image']; ?>" alt="image profile" class="avatar-img rounded-circle">
+									<img src="<?= base_url('assets/img/profile/').$_SESSION['image']; ?>" alt="image profile" class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">

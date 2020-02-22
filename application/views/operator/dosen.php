@@ -14,7 +14,7 @@
                         </a>
                     </div>
                 </div>
-
+                <div class="card-body">
                 <!-- table responsive -->
                 <div class="table-responsive">
                     <div class="row">
@@ -37,7 +37,7 @@
                                     <?php $no=1; ?>
                                     <?php foreach ($getuser as $p) { ?>
                                 <tr>
-                                    <td align="center"><?php echo $p->id; ?> </td>
+                                    <td align="center"><?php echo $p->id_user; ?> </td>
                                     <td align="center"><?php echo $p->nip; ?> </td>
                                     <td align="center"><?php echo $p->name; ?></td>
                                     <td align="center"><?php echo $p->email; ?></td>
@@ -46,10 +46,10 @@
                                     <td align="center"><?php echo $p->is_active; ?></td>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="<?= base_url();?>Operator/user_edit/<?php echo $p->id; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Data">
+                                            <a href="<?= base_url();?>Operator/user_edit/<?php echo $p->id_user; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Data">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a onclick="deleteConfirm('<?= base_url();?>Operator/user_delete/<?php echo $p->id; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Remove Data">
+                                            <a onclick="deleteConfirm('<?= base_url();?>Operator/user_delete/<?php echo $p->id_user; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Remove Data">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                             </button>                                                        

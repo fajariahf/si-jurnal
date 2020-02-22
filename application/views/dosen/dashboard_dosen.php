@@ -75,7 +75,7 @@
                             <?php foreach ($getView as $p) { ?>
                         <tr>
                             <td align="center"><?php echo $no++; ?></td>
-                            <td align="center"><?php echo $p->id; ?></td>
+                            <td align="center"><?php echo $p->id_user; ?></td>
                             <td align="center"><?php echo $p->id_jurnal; ?></td>
                             <td align="center"><?php echo $p->judul_jurnal; ?> </td>
                             <td align="center"><?php echo $p->nip_penulis; ?></td>

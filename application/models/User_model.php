@@ -17,6 +17,11 @@ class User_model extends CI_Model {
 		return $this->db->query("select * from user $where; ");
 	}
 
+	public function getUserById($id_user)
+	{
+		return $this->db->get_where('user', ['id_user' => $id_user])->row_array();
+	}
+
 	function getOperator()
 	{
 		$this->db->where('role_name', 'Operator');
@@ -43,9 +48,9 @@ class User_model extends CI_Model {
 		return $this->db->update($tabel, $data, $where);	
 	}
 
-	public function user_delete_info($id)
+	public function user_delete_info($id_user)
 	{
-		$this->db->where('id',$id);
+		$this->db->where('id_user',$id_user);
 		$this->db->delete('user');
 	}
 
@@ -53,7 +58,7 @@ class User_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('user');
-		$this->db->like('id',$keyword);
+		$this->db->like('id_user',$keyword);
 		$this->db->or_like('nip',$keyword);
 		$this->db->or_like('name',$keyword);
 		$this->db->or_like('email',$keyword);

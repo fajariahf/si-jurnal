@@ -14,18 +14,7 @@
                         </button>
                     </div>
 
-                    <div class="col-lg-6">
-                        <form action="<?= base_url();?>Admin/search_reviewer" method="post">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <button type="submit" class="btn btn-search pr-1" id="tombolCari">
-                                        <i class="fa fa-search search-icon-center"></i>
-                                    </button>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Search ..." name="keyword" id="keyword" autocomplete="off">
-                                </div>
-                            </div>
-                        </form>
+                    
 
                 </div>
                 <div class="card-body">
@@ -130,7 +119,7 @@
                                     <?php $no=1; ?>
                                     <?php foreach ($getuser as $p) { ?>
                                 <tr>
-                                    <td align="center"><?php echo $p->id; ?> </td>
+                                    <td align="center"><?php echo $p->id_user; ?> </td>
                                     <td align="center"><?php echo $p->nip; ?> </td>
                                     <td align="center"><?php echo $p->name; ?></td>
                                     <td align="center"><?php echo $p->email; ?></td>
@@ -139,10 +128,10 @@
                                     <td align="center"><?php echo $p->is_active; ?></td>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="<?= base_url();?>Admin/user_edit/<?php echo $p->id; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Data">
+                                            <a href="<?= base_url();?>Admin/user_edit/<?php echo $p->id_user; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Edit Data">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a onclick="deleteConfirm('<?= base_url();?>Admin/user_delete/<?php echo $p->id; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Remove Data">
+                                            <a onclick="deleteConfirm('<?= base_url();?>Admin/user_delete/<?php echo $p->id_user; ?>')" href="#!" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Remove Data">
                                                 <i class="fa fa-times"></i>
                                             </a>
                                             </button>                                                        

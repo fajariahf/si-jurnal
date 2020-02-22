@@ -32,7 +32,7 @@
                                 <tbody>
                                     <?php foreach ($getuser as $p ) { ?>
                                 <tr>
-                                    <td align="center"><?php echo $p->id; ?> </td>
+                                    <td align="center"><?php echo $p->id_user; ?> </td>
                                     <td align="center"><?php echo $p->nip; ?> </td>
                                     <td align="center"><?php echo $p->name; ?></td>
                                     <td align="center"><?php echo $p->email; ?></td>

@@ -50,12 +50,12 @@ class Admin extends CI_Controller {
 	{
 		$data['judul'] 		= 'Halaman Edit Data User';
 		$data['user'] 		= $this->User_model->user();
-		$data_user			= $this->User_model->getUser("where id = '$kode'")->result_array();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
 		
 		$data				= array(
 			'judul'					=> 'Halaman Edit Data User',
-			'kode'					=> $data_user[0]['id'],
-			'id'					=> $data_user[0]['id'],
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
 			'name'					=> $data_user[0]['name'],	
@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
 	public function user_save_edit()
 	{
 			$kode					= $this->input->post('kode');
-			$id						= $this->input->post('id');
+			$id_user				= $this->input->post('id_user');
 			$nip					= $this->input->post('nip');
 			$image					= $this->input->post('image');
 			$name					= $this->input->post('name');
@@ -85,7 +85,7 @@ class Admin extends CI_Controller {
 			$date_created			= time();
 
 			$data = array(
-				'id'				=> $id,
+				'id_user'			=> $id_user,
 				'nip'				=> $nip,
 				'image'				=> $image,
 				'name'				=> $name,
@@ -94,21 +94,21 @@ class Admin extends CI_Controller {
 				'is_active'			=> $is_active,
 				'date_created' 		=> time(),
 			);
-	$this->User_model->updatedata('user', $data, array('id' => $kode));
+	$this->User_model->updatedata('user', $data, array('id_user' => $kode));
 				redirect('Admin/index');
 	}
 
-	public function user_delete($id)
+	public function user_delete($id_user)
 	{
-		$this->User_model->user_delete_info($id);
+		$this->User_model->user_delete_info($id_user);
 		redirect('Admin/index');
 	}
 
-	public function search_index()
+	public function search()
 	{
 		$data['judul'] 		= 'Dashboard Admin';
 		$keyword 			= $this->input->post('keyword');
-		$data['getuser'] 	= $this->User_model->search_index($keyword);
+		$data['getuser'] 	= $this->User_model->search($keyword);
 
 		$this->load->view('admin/header_admin', $data);
 		$this->load->view('admin/sidebar_admin');
@@ -143,17 +143,6 @@ class Admin extends CI_Controller {
 		redirect('Admin/operator');
 	}
 
-	public function search_operator()
-	{
-		$data['judul'] 		= 'Halaman Data Operator';
-		$keyword 			= $this->input->post('keyword');
-		$data['getuser'] 	= $this->User_model->search_operator($keyword);
-
-		$this->load->view('admin/header_admin', $data);
-		$this->load->view('admin/sidebar_admin');
-		$this->load->view('admin/operator', $data);
-		$this->load->view('templates/footer');
-	}
 	
 ////////////////////////////// reviewer //////////////////////////////////////////
 	public function reviewer()
@@ -182,18 +171,7 @@ class Admin extends CI_Controller {
 		redirect('Admin/reviewer');
 	}
 
-	public function search_reviewer()
-	{
-		$data['judul'] 		= 'Halaman Data Reviewer';
-		$keyword 			= $this->input->post('keyword');
-		$data['getuser'] 	= $this->User_model->search_reviewer($keyword);
-
-		$this->load->view('admin/header_admin', $data);
-		$this->load->view('admin/sidebar_admin');
-		$this->load->view('admin/reviewer', $data);
-		$this->load->view('templates/footer');
-	}
-
+	
 ////////////////////////////// DOSEN //////////////////////////////////////////
 	public function dosen()
 	{
@@ -221,18 +199,6 @@ class Admin extends CI_Controller {
 		redirect('Admin/dosen');
 	}
 
-	public function search_dosen()
-	{
-		$data['judul'] 		= 'Halaman Data Dosen';
-		$keyword 			= $this->input->post('keyword');
-		$data['getuser'] 	= $this->User_model->search_dosen($keyword);
-
-		$this->load->view('admin/header_admin', $data);
-		$this->load->view('admin/sidebar_admin');
-		$this->load->view('admin/dosen', $data);
-		$this->load->view('templates/footer');
-	}
-
 ////////////////////////////// Profil ///////////////////////////////////////
 
 	public function profil()
@@ -250,23 +216,23 @@ class Admin extends CI_Controller {
 	{
 		$data['judul'] 		= 'Halaman Edit Profil';
 		$data['user'] 		= $this->User_model->user();
-		$data_user			= $this->User_model->getUser("where id = '$kode'")->result_array();
+		$data_user			= $this->User_model->getUser("where id_user = '$kode'")->result_array();
 		
 		$data				= array(
 			'judul'					=> 'Halaman Edit Profil',
-			'kode'					=> $data_user[0]['id'],
-			'id'					=> $data_user[0]['id'],
+			'kode'					=> $data_user[0]['id_user'],
+			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
 			'name'					=> $data_user[0]['name'],	
 			'email'					=> $data_user[0]['email'],	
-			'pendidikan_tertinggi'	=> $data_user[0]['pendidikan_tertinggi'],
-			'pangkat'				=> $data_user[0]['pangkat'],	
-			'gol_ruang'				=> $data_user[0]['gol_ruang'],	
-			'jab_fungsional'		=> $data_user[0]['jab_fungsional'],
-			'fakultas'				=> $data_user[0]['fakultas'],
-			'jurusan'				=> $data_user[0]['jurusan'],
-			'unit_kerja'			=> $data_user[0]['unit_kerja'],
+			// 'pendidikan_tertinggi'	=> $data_user[0]['pendidikan_tertinggi'],
+			// 'pangkat'				=> $data_user[0]['pangkat'],	
+			// 'gol_ruang'				=> $data_user[0]['gol_ruang'],	
+			// 'jab_fungsional'		=> $data_user[0]['jab_fungsional'],
+			// 'fakultas'				=> $data_user[0]['fakultas'],
+			// 'jurusan'				=> $data_user[0]['jurusan'],
+			// 'unit_kerja'			=> $data_user[0]['unit_kerja'],
 		);
 
         $this->load->view('admin/header_admin', $data);
@@ -279,20 +245,20 @@ class Admin extends CI_Controller {
 	public function profil_save_edit()
 	{
 		$kode					= $this->input->post('kode');
-		$id						= $this->input->post('id');
+		$id_user				= $this->input->post('id_user');
 		$nip					= $this->input->post('nip');
 		$name					= $this->input->post('name');
 		$email					= $this->input->post('email');
 		$image					= $this->input->post('image');
-		$pendidikan_tertinggi	= $this->input->post('pendidikan_tertinggi');
-		$pangkat				= $this->input->post('pangkat');
-		$gol_ruang				= $this->input->post('gol_ruang');
-		$jab_fungsional			= $this->input->post('jab_fungsional');
-		$fakultas				= $this->input->post('fakultas');
-		$jurusan				= $this->input->post('jurusan');
-		$unit_kerja				= $this->input->post('unit_kerja');
+		// $pendidikan_tertinggi	= $this->input->post('pendidikan_tertinggi');
+		// $pangkat				= $this->input->post('pangkat');
+		// $gol_ruang				= $this->input->post('gol_ruang');
+		// $jab_fungsional			= $this->input->post('jab_fungsional');
+		// $fakultas				= $this->input->post('fakultas');
+		// $jurusan				= $this->input->post('jurusan');
+		// $unit_kerja				= $this->input->post('unit_kerja');
 
-		$this->db->where('id',$kode);
+		$this->db->where('id_user',$kode);
 			$query	= $this->db->get('user');
 			$row	= $query->row();
 			
@@ -326,21 +292,21 @@ class Admin extends CI_Controller {
 				}
 
 				$data = array(
-					'id'					=> $id,
+					'id_user'				=> $id_user,
 					'nip'					=> $nip,
 					'name'					=> $name,
 					'email'					=> $email,
 					'image'					=> $image,
-					'pendidikan_tertinggi'	=> $pendidikan_tertinggi,
-					'pangkat'				=> $pangkat,
-					'gol_ruang'				=> $gol_ruang,
-					'jab_fungsional'		=> $jab_fungsional,
-					'fakultas'				=> $fakultas,
-					'jurusan'				=> $jurusan,
-					'unit_kerja'			=> $unit_kerja
+					// 'pendidikan_tertinggi'	=> $pendidikan_tertinggi,
+					// 'pangkat'				=> $pangkat,
+					// 'gol_ruang'				=> $gol_ruang,
+					// 'jab_fungsional'		=> $jab_fungsional,
+					// 'fakultas'				=> $fakultas,
+					// 'jurusan'				=> $jurusan,
+					// 'unit_kerja'			=> $unit_kerja
 					);
 
-	  $this->User_model->updatedata('user',$data, array('id' => $kode));
+	  $this->User_model->updatedata('user',$data, array('id_user' => $kode));
 	  redirect('Admin/profil');
 	}
 }

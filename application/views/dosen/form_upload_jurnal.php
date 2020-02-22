@@ -21,7 +21,7 @@
                             <div class="form-group row">
                                 <label for="nip" class="col-2 col-form-label">Id Dosen</label>
                                 <div class="col-10">
-                                    <input readonly class="form-control required" value="<?php echo $_SESSION['id']?>" name="id" id="id">
+                                    <input readonly class="form-control required" value="<?= $_SESSION['id_user']?>" name="id_user">
                                     <input class="form-control" type="hidden" name="id_jurnal" id="example-text-input">
                                     <input class="form-control" type="hidden" name="keterangan" id="example-text-input" value="Belum dinilai">
                                 </div>
@@ -34,14 +34,36 @@
                                 <?= form_error('nip_penulis','<small class="text-danger pl-3">','</small>');?>
                                 </div>
                             </div>
+                                            
+                                <div class="form-group row">
+                                    <label for="example-search-input" class="col-2 col-form-label">Status Penulis</label>
+                                    <div class="col-10">
+                                    <select readonly class="form-control form-control" name="stat_penulis" id="example-search-input"> -->
+                                            <!-- <option></option> -->
+                                            <option>P1</option>
+                                            <!-- <option>P2</option>
+                                            <option>P3</option>
+                                            <option>P4</option>
+                                            <option>P5</option>
+                                            <option>P6</option>
+                                            <option>P7</option>
+                                            <option>P8</option>
+                                            <option>P9</option>
+                                            <option>P10</option> -->
+                                        </select>
+                                        <?= form_error('stat_penulis','<small class="text-danger pl-3">','</small>');?>
+                                    </div>
+                                </div>
+
+
                             <!-- <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 1 (Utama)</label>
-                                <div class="col-6">
+                                <div class="col-10">
                                     <input required class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 1 (Utama)">
                                 </div>
                                 <button class="btn btn-primary fas fa-plus" onclick="document.getElementById('x').style.display = 'block'">    Tambah penulis 2</button>
-                            </div> -->
-                            <!-- <div id="x" style="display: none">
+                            </div>
+                            <div id="x" style="display: none">
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 2</label>
                                 <div class="col-6">
@@ -192,16 +214,34 @@
                             
                             <div class="col-md-4 ml-auto mr-auto">
                                 <div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd">
-                                    <button type="submit"  class="nav-link active">
+                                <button type="submit" class="nav-link active" data-toggle="modal" data-target="#modal_tengah">
                                     <i class="icon-cloud-upload"> Upload Jurnal</i>
-                                    </a>
+                                </button>
                                 </div>
                             </div>
-
                            
                     </form>  
                     </div>
                     </div>
+
+                    <!-- Modal
+                    <div class="modal fade in" id="modal_tengah">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h4 class="modal-title">SUCCESS!</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                            Jurnal Baru Berhasil Ditambahkan
+                            </div>
+                            <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">OK!</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                       Modal -->
 
 
                 </div>

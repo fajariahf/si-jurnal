@@ -20,14 +20,12 @@
                         <h6 class="card-subtitle"></h6>
                             <div class="form-group row">
                                 <label for="id_jurnal" class="col-2 col-form-label">Id Jurnal</label>
-                                    <input readonly class="form-control required" type="text" value="<?= $id_jurnal?>" name="id_jurnal" id="id_jurnal">
-                                    <input type="hidden" name="kode" value="<?=$kode ?>" />
+                                    <input readonly class="form-control required" value="<?php echo $id_jurnal; ?>" name="id_jurnal">
                             </div>
                             <div class="form-group row">
-                                <label for="id" class="col-2 col-form-label">Id Reviewer</label>
-                                    <input readonly class="form-control required" value="<?php echo $_SESSION['id']?>" name="id_reviewer" id="id_reviewer">
+                                <label for="id_user" class="col-2 col-form-label">Id Reviewer</label>
+                                    <input readonly class="form-control required" value="<?= $_SESSION['id_user'];?>" name="id_reviewer" id="id_reviewer">
                                     <input class="form-control" type="hidden" name="id_nilai" id="example-text-input">
-                                    <input readonly class="form-control required" type="hidden" value="<?= $jurnal['id_jurnal']?>" name="id_jurnal" id="id_jurnal">
                             </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Status Reviewer</label>

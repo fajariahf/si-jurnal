@@ -22,7 +22,7 @@
               <h4 class="card-title">Data Nilai Jurnal Dosen</h4>
           </div>
           <div class="col-md-4 ml-auto ">
-                    <form action="<?= base_url();?>Reviewer/search" method="post">
+                    <form action="<?= base_url();?>Reviewer/search_index" method="post">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <button type="submit" class="btn btn-search pr-1" id="tombolCari">
@@ -45,12 +45,10 @@
                                 <td align="center">No.</td>
                                 <td align="center">Id Dosen</td>
                                 <td align="center">Id Jurnal</td>
-                                <td align="center">Judul</td>
+                                <td align="center">Judul Jurnal</td>
                                 <td align="center">Nip Penulis</td>
-                                <td align="center">Status Penulis</td>
-                                <td align="center">Bukti Fisik</td>
                                 <td align="center">Id Nilai Jurnal</td>
-                                <td align="center">Nama Reviewer</td>
+                                <td align="center">Id Reviewer</td>
                                 <td align="center">Status Reviewer</td>
                                 <td align="center">Status</td>
                         </tr>
@@ -61,14 +59,12 @@
                             <?php foreach ($getView as $p) { ?>
                         <tr>
                             <td align="center"><?php echo $no++; ?></td>
-                            <td align="center"><?php echo $p->id_dosen; ?></td>
+                            <td align="center"><?php echo $p->id_user; ?></td>
                             <td align="center"><?php echo $p->id_jurnal; ?></td>
                             <td align="center"><?php echo $p->judul_jurnal; ?> </td>
                             <td align="center"><?php echo $p->nip_penulis; ?></td>
-                            <td align="center"><?php echo $p->stat_penulis; ?></td>
-                            <td align="center"><?php echo $p->bukti_fisik; ?></td>
                             <td align="center"><?php echo $p->id_nilai; ?></td>
-                            <td align="center"><?php echo $p->nama_reviewer; ?></td>
+                            <td align="center"><?php echo $p->id_reviewer; ?></td>
                             <td align="center"><?php echo $p->stat_reviewer; ?></td>
                             <td align="center"><?php echo $p->keterangan; ?></td>
                         </tr>
