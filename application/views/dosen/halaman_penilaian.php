@@ -18,42 +18,43 @@
                                 <thead>
                                 <tr>
                                     <td align="center">No.</td>
-                                    <td align="center">Id Jurnal</td>
-                                    <td align="center">Id Nilai</td>
-                                    <td align="center">Id Reviewer</td>
-                                    <td align="center">Status Reviewer</td>
+                                    <td align="center">Judul Jurnal</td>
+                                    <!-- <td align="center">Id Nilai</td> -->
+                                    <td align="center">Nama Reviewer</td>
+                                    <!-- <td align="center">Status Reviewer</td> -->
                                     <td align="center">Kelengkapan Isi (10%)</td>
                                     <td align="center">Ruanglingkup (30%)</td>
                                     <td align="center">Kecukupan (30%)</td>
                                     <td align="center">Kelengkapan Unsur (30%)</td>
-                                    <td align="center">Total</td>
-                                    <td align="center">Angka Kredit Penulis</td>
-                                    <td align="center">File Penilaian</td>
+                                    <td align="center">Total Nilai</td>
+                                    <td align="center">Kredit Penulis</td>
                                     <td align="center">Action</td>
                                 </tr>
                                 </thead>
                                 
                                 <tbody>
                                     <?php $no=1; ?>
-                                    <?php foreach ($getNilaiJurnal as $p) { ?>
+                                    <?php foreach ($getNilaiJurnal as $p) { 
+                                        ?>
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
-                                    <td align="center"><?php echo $p->id_jurnal; ?></td>
-                                    <td align="center"><?php echo $p->id_nilai; ?></td>
-                                    <td align="center"><?php echo $p->id_reviewer; ?></td>
-                                    <td align="center"><?php echo $p->stat_reviewer; ?></td>
+                                    <td align="center"><?php echo $p->judul_jurnal; ?></td>
+                                    <!-- <td align="center"><?php echo $p->id_nilai; ?></td> -->
+                                    <td align="center"><?php echo $p->name_reviewer; ?></td>
+                                    <!-- <td align="center"><?php echo $p->stat_reviewer; ?></td> -->
                                     <td align="center"><?php echo $p->kelengkapan_isi; ?></td>
                                     <td align="center"><?php echo $p->ruanglingkup; ?></td>
                                     <td align="center"><?php echo $p->kecukupan; ?></td>
                                     <td align="center"><?php echo $p->kelengkapan_unsur; ?></td>
-                                    <td align="center"><?php echo $sum; ?></td>
-                                    <td align="center"><?php echo $p->angka_kredit_penulis; ?></td>
-                                    <td align="center"><?php echo $p->file_penilaian; ?></td>
+                                    <td align="center"><?php echo number_format ($p->total, 2, '.', ''); ?></td>
+                                    <td align="center"><?php echo $p->kredit_penulis; ?></td>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="<?php echo base_url();?>Dosen/download/<?php echo $p->file_penilaian; ?>" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Download File Penilaian Jurnal">
+                                            <!-- <a href="<?php echo base_url();?>Dosen/download/<?php echo $p->file_penilaian; ?>" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Download File Penilaian Jurnal">
                                                 <i class="fa fa-download"></i>
-                                            </a>
+                                            </a> -->
+                                            <a target="_blank" href="<?php echo base_url(); ?>Dosen/cetak/<?php echo $p->id_jurnal; ?>" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Download File Penilaian Jurnal">
+                                                <i class="fa fa-download"></i>
                                             </button>                                                        
                                         </div>
                                     </td>

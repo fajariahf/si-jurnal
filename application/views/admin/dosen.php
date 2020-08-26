@@ -107,7 +107,7 @@
                                         <td align="center">Nip</td>
                                         <td align="center">Nama</td>
                                         <td align="center">Email</td>
-                                        <td align="center">Password</td>
+                                        <!-- <td align="center">Password</td> -->
                                         <td align="center">Role</td>
                                         <td align="center">Statue</td>
                                         <td align="center">Action</td>
@@ -122,7 +122,7 @@
                                     <td align="center"><?php echo $p->nip; ?> </td>
                                     <td align="center"><?php echo $p->name; ?></td>
                                     <td align="center"><?php echo $p->email; ?></td>
-                                    <td align="center"><?php echo $p->password; ?></td>
+                                    <!-- <td align="center"><?php echo $p->password; ?></td> -->
                                     <td align="center"><?php echo $p->role_name; ?></td>
                                     <td align="center"><?php echo $p->is_active; ?></td>
                                     <td>

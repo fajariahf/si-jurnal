@@ -36,12 +36,21 @@ class User_model extends CI_Model {
         return $query->result(); 
 	}
 	
-	function getDosen()
+	// function getDosen()
+	// {
+	// 	$this->db->where('role_name', 'Dosen');
+    //     $query = $this->db->get('user');
+    //     return $query->result(); 
+	// }
+
+	public function getDosen()
 	{
-		$this->db->where('role_name', 'Dosen');
+        $this->db->where('role_name', 'Dosen');
         $query = $this->db->get('user');
         return $query->result(); 
-	}
+        
+    }
+
 	
 	public function updatedata($tabel, $data, $where)
 	{

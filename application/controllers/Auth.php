@@ -31,9 +31,10 @@ class Auth extends CI_Controller {
 	{
 		$email 		= $this->input->post('email');
 		$password 	= $this->input->post('password');
+		$nip 		= $this->input->post('nip');
 
 		$user = $this->db->get_where('user', ['email' => $email])->row_array();
-        
+        $userDosen =  $this->db->get_where('user', ['nip' => $nip])->row_array();
         //jika usernya ada
 		if($user) {
 
@@ -59,6 +60,7 @@ class Auth extends CI_Controller {
 						redirect('Reviewer');
 					}
 					else if ($user['role_name'] == 'Dosen') {
+						// print_r($this->session);exit;rt
 						redirect('Dosen');
 					}
                 } else {
@@ -135,9 +137,9 @@ class Auth extends CI_Controller {
 	{
 		$config = [
 			'protocol' => 'smtp',
-			'smtp_host'=> 'ssl://smtp.googlemail.com',
-			'smtp_user'=> 'satriyalangit09@gmail.com',
-			'smtp_pass'=> '4rjunalangit',
+			'smtp_host'=> 'ssl://smtp.gmail.com',
+			'smtp_user'=> 'pkknundip@gmail.com',
+			'smtp_pass'=> 'cevpqyyduntyrknz',
 			'smtp_port'=> 465,
 			'mailtype' => 'html',
 			'charset'  => 'utf-8',
@@ -146,7 +148,7 @@ class Auth extends CI_Controller {
 		$this->load->library('email', $config);
 		$this->email->initialize($config);
 
-		$this->email->from('satriyalangit09@gmail.com', 'Admin');
+		$this->email->from('pkknundip@gmail.com', 'Admin');
 		$this->email->to($this->input->post('email'));
 
 		if($type == 'verify'){

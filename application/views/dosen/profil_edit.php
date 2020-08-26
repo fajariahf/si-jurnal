@@ -46,6 +46,9 @@
                                                 <option>S1</option>
                                                 <option>S2</option>
                                                 <option>S3</option>
+                                                <!-- <option value="S1" selected="<?php $pendidikan_tertinggi == 'S1'? "selected":"" ?>">S1</option>
+                                                <option value="S2" selected="<?php $pendidikan_tertinggi == 'S2'? "selected":"" ?>">S2</option>
+                                                <option value="S3" selected="<?php $pendidikan_tertinggi == 'S3'? "selected":"" ?>">S3</option> -->
                                             </select>
                                         </div>
                                     </div>

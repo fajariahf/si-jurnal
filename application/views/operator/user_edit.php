@@ -37,6 +37,10 @@
                                         <label type="hidden" for="example-search-input">Email</label>
                                             <input readonly class="form-control required" type="search" value="<?= $email?>" name="email" id="example-search-input">
                                     </div>
+                                    <!-- <div class="form-group">
+                                        <label type="hidden" for="example-search-input">Password</label>
+                                            <input class="form-control required" type="search" value="<?= $password?>" name="password" id="example-search-input">
+                                    </div> -->
                                     <div class="form-group">
                                         <label for="solidSelect">Select Role</label>
                                             <select required class="form-control input-solid" name="role_name" id="solidSelect" type="search" value="<?= $role_name?>" >
@@ -44,7 +48,7 @@
                                                 <option>Reviewer</option>
                                                 <option>Dosen</option>
                                             </select>
-                                    </div>
+                                    </div>                                    
                                     <div class="form-group">
                                         <label for="solidSelect">Statue</label>
                                             <input readonly class="form-control required" type="search" value="<?= $is_active?>" name="is_active" id="example-search-input">

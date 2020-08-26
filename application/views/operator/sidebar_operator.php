@@ -36,24 +36,18 @@
 				</a>
 			</li>
 
-			<!-- <li class="nav-section">
+			<li class="nav-section">
 				<span class="sidebar-mini-icon">
 					<i class="fa fa-ellipsis-h"></i>
 				</span>
 				<h4 class="text-section">Menu</h4>
 			</li>
 			<li class="nav-item">
-				<a href="../components/navbar.html">
+				<a href="<?= base_url(); ?>Operator/halamanJurnal">
 				<i class="flaticon-list"></i>
 					<p>Halaman Jurnal</p>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a href="../components/navbar.html">
-					<i class="flaticon-pen"></i>
-					<p>Halaman Penilaian</p>
-				</a>
-			</li> -->
 
 			<li class="nav-section">
 				<span class="sidebar-mini-icon">

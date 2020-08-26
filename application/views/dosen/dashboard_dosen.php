@@ -4,7 +4,7 @@
             <div class="page-inner py-3">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Selamat Datang, <?php echo $_SESSION['name'] ?></h2>
+                        <h2 class="text-white pb-2 fw-bold">Selamat Datang di Akun Dosen, <?php echo $_SESSION['name'] ?></h2>
                     </div>
                 </div>
             </div>
@@ -61,12 +61,10 @@
                         <thead>
                         <tr>
                                 <td align="center">No.</td>
-                                <td align="center">Id Dosen</td>
                                 <td align="center">Id Jurnal</td>
+                                <!-- <td align="center">Nama Penulis</td> -->
                                 <td align="center">Judul</td>
-                                <td align="center">Nip Penulis</td>
-                                <td align="center">Bukti Fisik</td>
-                                <td align="center">Status</td>
+                                <td align="center">Jumlah Reviewer</td>
                         </tr>
                         </thead>
                         
@@ -75,12 +73,10 @@
                             <?php foreach ($getView as $p) { ?>
                         <tr>
                             <td align="center"><?php echo $no++; ?></td>
-                            <td align="center"><?php echo $p->id_user; ?></td>
                             <td align="center"><?php echo $p->id_jurnal; ?></td>
+                            <!-- <td align="center"><?php echo $p->name; ?></td> -->
                             <td align="center"><?php echo $p->judul_jurnal; ?> </td>
-                            <td align="center"><?php echo $p->nip; ?></td>
-                            <td align="center"><?php echo $p->bukti_fisik; ?></td>
-                            <td align="center"><?php echo $p->keterangan; ?></td>
+                            <td align="center"><?php echo $p->Q; ?></td>
                         </tr>
                             <?php } ?>
                         </tbody>

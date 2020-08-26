@@ -1,5 +1,36 @@
-<link rel="stylesheet" href="sweetalert/style.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="<?= base_url(); ?>assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['<?= base_url(); ?>assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= base_url(); ?>assets/css/atlantis.min.css">
+	
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
 
 <div class="main-panel">
     <div class="content">
@@ -10,119 +41,26 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Form Tambah Penulis</h4>
+                            <p class="card-title h3">Form Tambah Penulis</p>
+                            <!-- <?= $this->session->flashdata('message');?> -->
                         </div>
+							<p class="text-primary h6">*mohon masukkan NIP penulis sesuai dengan status penulis</p>
                     </div>
+                    <div class="form-group">
+                        <form name="add_name" id="add_name">
+                            <input name="id_jurnal" id="id_jurnal" type="hidden" value="<?php echo $id_jurnal?>">
+                            <div class="table-responsive">  
+                                <table class="table table-bordered" id="dynamic_field">  
+                                <tr>
+                                   <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                                    </tr>  
+                                </table>  
+                                <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />  
+                            </div>  
+                        </form>  
+                    </div>  
 
-                    <div class="card-body">
-                    <div class="col-12">
-                    <form action="<?php echo base_url();?>Dosen/tambah_penulis_save" enctype="multipart/form-data" method="POST" class="tab-wizard vertical wizard-circle m-t-40">
-
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-2 col-form-label">Id Jurnal</label>
-                            <div class="col-10">
-                                <input type="hidden" name="kode" value="<?=$kode ?>" />
-                                <input readonly class="form-control" type="text" value="<?= $id_jurnal?>" name="id_jurnal" id="example-text-input">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Judul Jurnal</label>
-                            <div class="col-10">
-                                <input readonly class="form-control required" type="search" value="<?= $judul_jurnal?>" name="judul_jurnal" id="example-search-input">
-
-                                <input class="form-control required" type="hidden" value="<?= $_SESSION['id_user']?>" name="id_user" id="example-text-input">
-                            
-                                <!-- <input class="form-control required" type="hidden" value="<?= $nip?>" name="nip" id="example-search-input"> -->
-                                                   
-                                <input class="form-control required" type="hidden" value="<?= $nama_jurnal?>" name="nama_jurnal" id="example-search-input">
-                            
-                                <input class="form-control required" type="hidden" value="<?= $ISSN?>" name="ISSN" id="example-search-input">
-                            
-                                <input class="form-control required" type="hidden" value="<?= $volume?>" name="volume" id="example-search-input">
-                           
-                                <input class="form-control required" type="hidden" value="<?= $nomor?>" name="nomor" id="example-search-input">
-
-                                <input class="form-control required" type="hidden" value="<?= $bulan?>" name="bulan" id="example-search-input">
-                            
-                                <input class="form-control required" type="hidden" value="<?= $tahun?>" name="tahun" id="example-search-input">
-                          
-                                <input class="form-control required" type="hidden" value="<?= $penerbit?>" name="penerbit" id="example-search-input">
-                            
-                                <input class="form-control required" type="hidden" value="<?= $DOI?>" name="DOI" id="example-search-input">
-                           
-                                <input class="form-control required" type="hidden" value="<?= $alamat_web_jurnal?>" name="alamat_web_jurnal" id="example-search-input">
-                           
-                                <input class="form-control required" type="hidden" value="<?= $alamat_web_artikel?>" name="alamat_web_artikel" id="example-search-input">
-                           
-                                <input class="form-control required" type="hidden" value="<?= $terindeks_di?>" name="terindeks_di" id="example-search-input">
-                          
-                                <input class="form-control required" type="hidden" value="<?= $status?>" name="status" id="example-search-input">
-
-                                <input class="form-control required" type="hidden" value="<?= $keterangan?>" name="keterangan" id="example-search-input">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Nip Penulis</label>
-                            <div class="col-10">
-                            <input required type="search" class="form-control" id="nip" name="nip" placeholder="Nip Penulis">
-                            <?= form_error('nip','<small class="text-danger pl-3">','</small>');?>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Status Penulis</label>
-                            <div class="col-10">
-                            <select required class="form-control form-control" name="stat_penulis" id="example-search-input"> -->
-                                    <option></option>
-                                    <!-- <option>P1</option> -->
-                                    <option>P2</option>
-                                    <option>P3</option>
-                                    <option>P4</option>
-                                    <option>P5</option>
-                                    <option>P6</option>
-                                    <option>P7</option>
-                                    <option>P8</option>
-                                    <option>P9</option>
-                                    <option>P10</option>
-                                </select>
-                                <?= form_error('stat_penulis','<small class="text-danger pl-3">','</small>');?>
-                            </div>
-                        </div>
-
-                        <!-- <div class="form-group row">
-                            <label for="wint1" class="col-2 col-form-label">File Jurnal</label>
-                            <div class="col-10">
-                                <input required type="file" class="form-control required" class="btn btn-primary" value="<?= $file_jurnal?>" name="file_jurnal" id="wint1" >
-                                <span class="text-muted"><a target="_blank" href="<?php echo base_url();?>assets/file/<?=$file_jurnal?>"><?php echo $file_jurnal?></span></a>
-                            </div>
-                        </div> -->
-
-                        <div class="col-md-2 ml-auto mr-auto">
-                            <div class="form-button-action">
-                            <button type="submit" class="btn btn-primary">
-                                <span class="btn-label">
-                                    <i class="fa fa-check"></i>
-                                </span>
-                                Tambah
-                            </button>
-                            </div> 
-                        </div>
-                            
-                            <!-- <div class="col-md-4 ml-auto mr-auto">
-                                <div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd">
-                                    <button type="submit" onclick="sweet()" class="nav-link active">
-                                    <i class="icon-cloud-upload"> Ubah Data Jurnal</i>
-                                    </a>
-                                </div>
-                            </div> -->
-
-                           
-                    </form>  
-                    </div>
-                    </div>
-
-
+                    
                 </div>
             </div>
 
@@ -130,62 +68,125 @@
         </div>				
 	</div>		
 </div>
+<script>
+
+	function urutanPenulis(data) {
+		switch (data) {
+			case 1:
+				return "Penulis Pertama";
+				break;
+			case 2:
+				return "Penulis Kedua";
+				break;
+			case 3:
+				return "Penulis Ketiga";
+				break;
+			case 4:
+				return "Penulis Keempat";
+				break;
+			case 5:
+				return "Penulis Kelima";
+				break;
+			case 6:
+				return "Penulis Keenam";
+				break;
+			case 7:
+				return "Penulis Ketujuh";
+				break;
+			case 8:
+				return "Penulis Kedelapan";
+				break;
+			case 9:
+				return "Penulis Kesembilan";
+				break;
+			case 10:
+				return "Penulis Kesepuluh";
+				break;
+			default:
+				return "default";
+				break;
+		}
+	}
+
+ $(document).ready(function(){  
+      var i=0;  
+      $('#add').click(function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'">'+
+           '<td><input type="text" name="status[]" class="form-control status_list" value="'+urutanPenulis(i)+'" readonly /></td>'+
+           '<td><input type="text" name="name[]" placeholder="Enter Users NIP (Author NIP)" class="form-control name_list" /></td>'+
+           '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>'
+           
+           );  
+      });  
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("nip");   
+           $('#row'+button_id+'').remove();
+      });  
+      $('#submit').click(function(){            
+           $.ajax({ 
+                url:"<?php echo base_url();?>Dosen/tambahPenulis/",  
+                method:"POST",  
+                data:$('#add_name').serialize(),  
+                success: 
+				
+				function(data)  
+                {  
+					if(data == "Y"){
+						location.href = "<?php echo base_url();?>Dosen/halaman_penulis";
+                     	// alert("data berhasil ditambahkan");  
+					}else{
+                     	alert("masukkan NIP yang sesuai");  
+                     	$('#add_name')[0].reset();  
+					}
+                }  
+           });  
+      });  
+ });  
+ </script>
+
+ <!--   Core JS Files   -->
+ <script src="<?= base_url(); ?>assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/core/popper.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/core/bootstrap.min.js"></script>
+
+	
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.4.1.min.js');?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.bundle.js');?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-select.js');?>"></script>
+
+	<!-- jQuery UI -->
+	<script src="<?= base_url(); ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="<?= base_url(); ?>assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-<div class="chat-windows"></div>
-    <script src="<?php echo base_url();?>dist/js/app.min.js"></script>
-    <!-- <script src="<?php echo base_url();?>dist/js/app.init.dark.js"></script> -->
-    <script src="<?php echo base_url();?>dist/js/app-style-switcher.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="<?php echo base_url();?>assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="<?php echo base_url();?>assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="<?php echo base_url();?>dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="<?php echo base_url();?>dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<?php echo base_url();?>dist/js/custom.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="<?php echo base_url();?>assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <!--c3 charts -->
-    <script src="<?php echo base_url();?>assets/extra-libs/c3/d3.min.js"></script>
-    <script src="<?php echo base_url();?>assets/extra-libs/c3/c3.min.js"></script>
-    <!--chartjs -->
-    <script src="<?php echo base_url();?>assets/libs/raphael/raphael.min.js"></script>
-    <script src="<?php echo base_url();?>assets/libs/morris.js/morris.min.js"></script>
+	<!-- Chart JS -->
+	<script src="<?= base_url(); ?>assets/js/plugin/chart.js/chart.min.js"></script>
 
-       <script>
+	<!-- jQuery Sparkline -->
+	<script src="<?= base_url(); ?>assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-    //Custom design form example
-    $(".tab-wizard").steps({
-        headerTag: "h6",
-        bodyTag: "section",
-        transitionEffect: "fade",
-        titleTemplate: '<span class="step">#index#</span> #title#',
-        labels: {
-            finish: "Submit"
-        },
-        onFinished: function(event, currentIndex)  {
-            var form = $(this);
+	<!-- Chart Circle -->
+	<script src="<?= base_url(); ?>assets/js/plugin/chart-circle/circles.min.js"></script>
 
-            // Disable validation on fields that are disabled.
-            // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-            //form.validate().settings.ignore = ":disabled";
+	<!-- Datatables -->
+	<script src="<?= base_url(); ?>assets/js/plugin/datatables/datatables.min.js"></script>
 
-            // Start validation; Prevent form submission if false
-            //return form.valid();
-        },
-        onFinished: function (event, currentIndex)
-        {
-            var form = $(this);
+	<!-- jQuery Vector Maps -->
+	<script src="<?= base_url(); ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="<?= base_url(); ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
-            // Submit form input
+	<!-- Sweet Alert -->
+	<script src="<?= base_url(); ?>assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
-            form.submit();
-        }
-    });
-    </script>
+	<!-- Atlantis JS -->
+	<script src="<?= base_url(); ?>assets/js/atlantis.min.js"></script>
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="<?= base_url(); ?>assets/js/setting-demo.js"></script>
+	<script src="<?= base_url(); ?>assets/js/demo.js"></script>
+</body>
+</html>

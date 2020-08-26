@@ -42,7 +42,7 @@
                                     <div class="form-group row">
                                         <label for="wint1" class="col-2 col-form-label">Foto Profil</label>
                                         <div class="col-10">
-                                            <input required type="file" class="form-control required" class="btn btn-primary" value="<?php echo $image?>" name="image" id="wint1" >
+                                            <input type="file" class="form-control required" class="btn btn-primary" value="<?php echo $image?>" name="image" id="wint1" >
                                             <span class="text-muted"><a target="_blank" href="<?php echo base_url();?>assets/img/profile/<?=$image?>"><?php echo $image?></span></a>
                                         </div>
                                     </div>

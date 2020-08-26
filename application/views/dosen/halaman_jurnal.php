@@ -36,18 +36,15 @@
                                 <thead>
                                 <tr>
                                     <td align="center">No.</td>
-                                    <td align="center">Id Jurnal</td>
-                                    <td align="center">NIP Penulis</td>
-                                    <td align="center">Nama Jurnal</td>
+                                    <!-- <td align="center">Id Jurnal</td> -->
                                     <td align="center">Judul</td>
+                                    <td align="center">Nama Jurnal</td>
                                     <td align="center">Nomor ISSN</td>
                                     <td align="center">Volume/Nomor Bulan/Tahun</td>
                                     <td align="center">Penerbit</td>
                                     <td align="center">DOI</td>
                                     <td align="center">Alamat Web Jurnal/<br>Alamat Web Artikel</td>
                                     <td align="center">Terindeks di</td>
-                                    <td align="center">Status</td>
-                                    <td align="center">File Jurnal</td>
                                     <td align="center">Action</td>
                                 </tr>
                                 </thead>
@@ -57,23 +54,26 @@
                                     <?php foreach ($getDataJurnal as $p) { ?>
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
-                                    <td align="center"><?php echo $p->id_jurnal; ?></td>
-                                    <td align="center"><?php echo $p->nip; ?></td>
-                                    <td align="center"><?php echo $p->nama_jurnal; ?></td>
+                                    <!-- <td align="center"><?php echo $p->id_jurnal; ?></td> -->
                                     <td align="center"><?php echo $p->judul_jurnal; ?></td>
+                                    <td align="center"><?php echo $p->nama_jurnal; ?></td>
                                     <td align="center"><?php echo $p->ISSN; ?></td>
                                     <td align="center"><?php echo $p->volume; ?>/<?php echo $p->nomor; ?><br><?php echo $p->bulan; ?>/<?php echo $p->tahun; ?></td>
-                                    <td align="center"><?php echo $p->penerbit; ?></td>
+                                    <td align="center"><?php echo $p->penerbit; ?></td>   
                                     <td align="center"><?php echo $p->DOI; ?></td>
-                                    <td align="center"><?php echo $p->alamat_web_jurnal; ?><br><?php echo $p->alamat_web_artikel; ?></td>
+
+                                    <td align="center">
+                                    <a href="<?php echo $p->alamat_web_jurnal; ?>" target="_blank">
+                                    <?php echo $p->alamat_web_jurnal; ?>
+                                    <br></a>
+                                    <a href=" <?php echo $p->alamat_web_artikel;?>" target="_blank">
+                                    <?php echo $p->alamat_web_artikel;?></a></td>
                                     <td align="center"><?php echo $p->terindeks_di; ?></td>
-                                    <td align="center"><?php echo $p->status; ?></td>
-                                    <td align="center"><?php echo $p->file_jurnal; ?></td>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="<?= base_url();?>Dosen/halaman_penulis" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Tambah Penulis">
+                                            <!-- <a href="<?= base_url();?>Dosen/halaman_penulis" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Tambah Penulis">
                                                 <i class="fa fa-plus"></i>
-                                            </a>
+                                            </a> -->
                                             <a href="<?php echo base_url();?>Dosen/download/<?php echo $p->file_jurnal; ?>" type="submit" data-toggle="tooltip" title="" class="btn btn-link btn-simple-primary btn-lg" data-original-title="Download Jurnal">
                                                 <i class="fa fa-download"></i>
                                             </a>

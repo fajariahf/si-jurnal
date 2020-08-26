@@ -26,34 +26,36 @@
                                 <label for="id_user" class="col-2 col-form-label">Id Reviewer</label>
                                     <input readonly class="form-control required" value="<?= $_SESSION['id_user'];?>" name="id_reviewer" id="id_reviewer">
                                     <input class="form-control" type="hidden" name="id_nilai" id="example-text-input">
+                                    <input class="form-control" type="hidden" value="<?= $_SESSION['name'];?>" name="name_reviewer" id="name_reviewer">
+                                    <input class="form-control" type="hidden" value="<?= $_SESSION['nip'];?>" name="nip_reviewer" id="nip_reviewer">
                             </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Status Reviewer</label>
                                 <select required class="form-control form-control" name="stat_reviewer" id="example-search-input">
-                                        <option></option>
-                                        <option>R1</option>
-                                        <option>R2</option>
+                                        <!-- <option></option> -->
+                                        <option>Reviewer 1</option>
+                                        <!-- <option>R2</option> -->
                                 </select>
                                     <?= form_error('stat_reviewer','<small class="text-danger pl-3">','</small>');?>
                             </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Kelengkapan Unsur Isi Artikel (10%)</label>
-                                <input required type="search" class="form-control" id="kelengkapan_isi" name="kelengkapan_isi" placeholder="Kelengkapan Unsur Isi Artikel">
+                                <input required type="number" class="form-control" id="kelengkapan_isi" name="kelengkapan_isi" placeholder="Kelengkapan Unsur Isi Artikel">
                                 <?= form_error('kelengkapan_isi','<small class="text-danger pl-3">','</small>');?>
                             </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Ruang Lingkup dan Kedalaman Pembahasan (30%)</label>
-                                <input required type="search" class="form-control" id="ruanglingkup" name="ruanglingkup" placeholder="Ruang Lingkup dan Kedalaman Pembahasan Jurnal">
+                                <input required type="number" class="form-control" id="ruanglingkup" name="ruanglingkup" placeholder="Ruang Lingkup dan Kedalaman Pembahasan Jurnal">
                                 <?= form_error('ruanglingkup','<small class="text-danger pl-3">','</small>');?>
                                 </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-6 col-form-label">Kecukupan dan Kemutahiran Data/Informasi dan Metodologi (30%)</label>
-                                <input required type="search" class="form-control" id="kecukupan" name="kecukupan" placeholder="Kecukupan dan Kemutahiran Data/Informasi dan Metodologi">
+                                <input required type="number" class="form-control" id="kecukupan" name="kecukupan" placeholder="Kecukupan dan Kemutahiran Data/Informasi dan Metodologi">
                                 <?= form_error('kecukupan','<small class="text-danger pl-3">','</small>');?>
                             </div>
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Kelengkapan Unsur dan Kualitas Terbitan/Jurnal (30%)</label>
-                                <input required type="search" class="form-control" id="kelengkapan_unsur" name="kelengkapan_unsur" placeholder="Kelengkapan Unsur dan Kualitas Terbitan/Jurnal">
+                                <input required type="number" class="form-control" id="kelengkapan_unsur" name="kelengkapan_unsur" placeholder="Kelengkapan Unsur dan Kualitas Terbitan/Jurnal">
                                 <?= form_error('kelengkapan_unsur','<small class="text-danger pl-3">','</small>');?>
                             </div>
                             <!-- <div class="form-group row">

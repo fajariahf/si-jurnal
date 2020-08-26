@@ -11,7 +11,7 @@
 				</a>
 			</li>
 
-			<li class="nav-section">
+			<!-- <li class="nav-section">
 				<span class="sidebar-mini-icon">
 					<i class="fa fa-ellipsis-h"></i>
 				</span>
@@ -34,7 +34,7 @@
 				<i class="far fa-id-badge"></i>
 					<p>Dosen</p>
 				</a>
-			</li>
+			</li> -->
 
 			<li class="nav-section">
 				<span class="sidebar-mini-icon">
@@ -52,6 +52,19 @@
 				<a href="<?= base_url(); ?>Reviewer/halaman_penilaian">
 					<i class="flaticon-pen"></i>
 					<p>Halaman Penilaian</p>
+				</a>
+			</li>
+
+			<li class="nav-section">
+				<span class="sidebar-mini-icon">
+					<i class="fa fa-ellipsis-h"></i>
+				</span>
+				<h4 class="text-section">Beralih Akun</h4>
+			</li>
+			<li class="nav-item">
+				<a href="<?= base_url(); ?>Reviewer/jadi_dosen">
+				<i class="far fa-id-badge"></i>
+					<p>Masuk Sebagai Dosen</p>
 				</a>
 			</li>
 

@@ -26,79 +26,6 @@
                                     <input class="form-control" type="hidden" name="keterangan" id="example-text-input" value="Belum dinilai">
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 1 (Utama)</label>
-                                <div class="col-10">
-                                <input required type="search" class="form-control" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 1 (Utama)">
-                                <?= form_error('nip_penulis','<small class="text-danger pl-3">','</small>');?>
-                                </div>
-                            </div>
-                                            
-                                <div class="form-group row">
-                                    <label for="example-search-input" class="col-2 col-form-label">Status Penulis</label>
-                                    <div class="col-10">
-                                    <select readonly class="form-control form-control" name="stat_penulis" id="example-search-input"> -->
-                                            <!-- <option></option> -->
-                                            <option>P1</option>
-                                            <!-- <option>P2</option>
-                                            <option>P3</option>
-                                            <option>P4</option>
-                                            <option>P5</option>
-                                            <option>P6</option>
-                                            <option>P7</option>
-                                            <option>P8</option>
-                                            <option>P9</option>
-                                            <option>P10</option> -->
-                                        </select>
-                                        <?= form_error('stat_penulis','<small class="text-danger pl-3">','</small>');?>
-                                    </div>
-                                </div>
-
-
-                            <!-- <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 1 (Utama)</label>
-                                <div class="col-10">
-                                    <input required class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 1 (Utama)">
-                                </div>
-                                <button class="btn btn-primary fas fa-plus" onclick="document.getElementById('x').style.display = 'block'">    Tambah penulis 2</button>
-                            </div>
-                            <div id="x" style="display: none">
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 2</label>
-                                <div class="col-6">
-                                    <input class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 2">
-                                </div>
-                                <button class="btn btn-primary fas fa-plus" onclick="document.getElementById('x1').style.display = 'block'">    Tambah penulis 3</button>
-                            </div>
-                            </div>
-                            <div id="x1" style="display: none">
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 3</label>
-                                <div class="col-6">
-                                    <input class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 3">
-                                </div>
-                                <button class="btn btn-primary fas fa-plus" onclick="document.getElementById('x2').style.display = 'block'">    Tambah penulis 4</button>
-                            </div>
-                            </div>
-                            <div id="x2" style="display: none">
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 4</label>
-                                <div class="col-6">
-                                    <input class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 4">
-                                </div>
-                                <button class="btn btn-primary fas fa-plus" onclick="document.getElementById('x3').style.display = 'block'">    Tambah penulis 5</button>
-                            </div>
-                            </div>
-                            <div id="x3" style="display: none">
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">NIP Penulis 5</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="search" id="nip_penulis" name="nip_penulis" placeholder="NIP Penulis 5">
-                                </div>
-                            </div>
-                            </div> -->
-
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Judul Jurnal</label>
                                 <div class="col-10">
@@ -116,7 +43,7 @@
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Nomor ISSN</label>
                                 <div class="col-10">
-                                <input required type="search" class="form-control" id="ISSN" name="ISSN" placeholder="Nomor ISSN">
+                                <input required type="number" class="form-control" id="ISSN" name="ISSN" placeholder="Nomor ISSN">
                                 <?= form_error('ISSN','<small class="text-danger pl-3">','</small>');?>
                                 </div>
                             </div>
@@ -130,7 +57,7 @@
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Nomor</label>
                                 <div class="col-10">
-                                <input required type="search" class="form-control" id="nomor" name="nomor" placeholder="Nomor Jurnal">
+                                <input required type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Jurnal">
                                 <?= form_error('nomor','<small class="text-danger pl-3">','</small>');?>
                                 </div>
                             </div>
@@ -158,7 +85,7 @@
                             <div class="form-group row">
                                 <label for="example-search-input" class="col-2 col-form-label">Tahun</label>
                                 <div class="col-10">
-                                <input required type="search" class="form-control" id="tahun" name="tahun" placeholder="Tahun">
+                                <input required type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun">
                                 <?= form_error('tahun','<small class="text-danger pl-3">','</small>');?>
                                 </div>
                             </div>
@@ -196,13 +123,7 @@
                                 <input required type="search" class="form-control" id="terindeks_di" name="terindeks_di" placeholder="Terindeks di">
                                 <?= form_error('terindeks_di','<small class="text-danger pl-3">','</small>');?>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-2 col-form-label">Status</label>
-                                <div class="col-10">
-                                <input readonly type="search" class="form-control" id="status" name="status" value="Belum digunakan">
-                                </div>
-                            </div>
+                            </div>                            
                             <div class="form-group row">
                                 <label for="filejurnal" class="col-2 col-form-label">File Jurnal</label>
                                 <div class="col-10">

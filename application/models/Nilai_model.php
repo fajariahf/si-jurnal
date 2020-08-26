@@ -3,21 +3,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Nilai_model extends CI_Model {
 
+	public function getAllNilai()
+	{
+		$query = $this->db->get('view_nilaijurnal');
+		return $query->result(); 
+		
+		// $this->db->SELECT('nilai_jurnal.*, jurnal.judul_jurnal');
+		// $this->db->from('jurnal');
+		// $this->db->join('nilai_jurnal', 'nilai_jurnal.id_jurnal = jurnal.id_jurnal', 'left');
+		// $query = $this->db->get();
+		// return $query;
+		
+	}	
+
 	public function nilai_delete($id_nilai)
 	{
 		$this->db->where('id_nilai',$id_nilai);
 		$this->db->delete('nilai_jurnal');
 	}
-	
-	public function nilai_jurnal()
+
+	public function total()
 	{
-        $query = $this->db->get('nilai_jurnal');
+        $query = $this->db->get('view_total');
         return $query->result(); 
+		
+	}
+	
+	public function getNilaiJurnal($id_user)
+	{
+		$this->db->where('id_reviewer', $id_user);
+		$query = $this->db->get('view_nilaijurnal');
+		return $query->result();
+        // $query = $this->db->get('view_nilaijurnal');
+        // return $query->result(); 
+	}
+
+	public function ambilJumlahJurnal()
+	{
+		$sql = "SELECT * FROM nilai_jurnal GROUP BY id_jurnal";
+		// $result = $this->db->query($sql);
+
+		$result = $sql->row_array();
+		$count = $result['COUNT(*)'];
+		return $result;
 	}
 
 	public function get_total()
 	{
-		$sql = "SELECT sum((kelengkapan_isi + ruanglingkup + kecukupan + kelengkapan_unsur)/2) AS total FROM nilai_jurnal ORDER BY id_jurnal";
+		$sql = "SELECT sum((kelengkapan_isi + ruanglingkup + kecukupan + kelengkapan_unsur)/2) AS total FROM nilai_jurnal GROUP BY id_jurnal";
 		$result = $this->db->query($sql);
 		return $result->row()->total;
 	}
@@ -52,7 +85,12 @@ class Nilai_model extends CI_Model {
 	}
 
 	public function getNilai($where = ''){
-		return $this->db->query("SELECT * FROM nilai_jurnal $where; ");
+		return $this->db->query("SELECT * FROM view_nilaijurnal $where; ");
+	}
+
+	function updateData($tabel, $data, $where)
+	{
+		return $this->db->update($tabel, $data, $where);	
 	}
 
 	//GET NILAI BY JURNAL ID
@@ -94,6 +132,18 @@ class Nilai_model extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}  
+
+	function cetak_detail($cetak)
+  {
+	// return $this->db->get_where("view_formnilai", array('id_user' => $cetak));
+	$this->db->SELECT('*');
+	$this->db->from('view_formnilai');
+	$this->db->where('id_jurnal', $cetak);
+	$query = $this->db->get();
+	return $query;
+
+	// return $this->db->query("SELECT * FROM view_formnilai order by id_jurnal asc");
+  }
 
 
 }

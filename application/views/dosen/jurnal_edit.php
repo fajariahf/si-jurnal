@@ -26,18 +26,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Nip Penulis</label>
-                            <div class="col-10">
-                                <input readonly class="form-control required" type="search" value="<?= $nip_penulis?>" name="nip_penulis" id="example-search-input">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Status Penulis</label>
-                            <div class="col-10">
-                                <input readonly class="form-control required" type="search" value="<?= $stat_penulis?>" name="stat_penulis" id="example-search-input">
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="example-search-input" class="col-2 col-form-label">Judul Jurnal</label>
                             <div class="col-10">
                                 <input class="form-control required" type="search" value="<?= $judul_jurnal?>" name="judul_jurnal" id="example-search-input">
@@ -121,12 +109,6 @@
                             <label for="example-search-input" class="col-2 col-form-label">Terindeks di</label>
                             <div class="col-10">
                                 <input class="form-control required" type="search" value="<?= $terindeks_di?>" name="terindeks_di" id="example-search-input">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Status</label>
-                            <div class="col-10">
-                                <input readonly class="form-control required" type="search" value="<?= $status?>" name="status" id="example-search-input">
                             </div>
                         </div>
                         <div class="form-group row">

@@ -265,7 +265,7 @@ class Admin extends CI_Controller {
 			unlink(".assets/img/profile/$row->image");
 			if($_FILES['image']['name'] != ""){
 				$config['upload_path']          = 'assets/img/profile';
-				$config['allowed_types']        = 'jpeg|jpg|png|pdf';
+				$config['allowed_types']        = 'jpeg|jpg|png|pdf|gif';
 				$config['max_size']             = '2000';
 				$config['remove_space']			= true;
 				$config['overwrite']			= true;
@@ -306,7 +306,13 @@ class Admin extends CI_Controller {
 					// 'unit_kerja'			=> $unit_kerja
 					);
 
-	  $this->User_model->updatedata('user',$data, array('id_user' => $kode));
+	$update_profil = $this->User_model->updatedata('user',$data, array('id_user' => $kode));
+	if($update_profil){
+		$this->session->unset_userdata('image');
+		$this->session->set_userdata('image',$data['image']);
+	}else{
+		echo 'gagal';
+	}
 	  redirect('Admin/profil');
 	}
 }

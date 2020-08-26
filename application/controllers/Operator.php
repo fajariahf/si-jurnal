@@ -71,6 +71,7 @@ class Operator extends CI_Controller {
 	{
 		$data['judul'] 		= 'Halaman Data Dosen';
 		$data['getuser'] 	= $this->User_model->getDosen();
+		// $data['getuser'] 	= $this->Jurnal_model->jurnal();
 
         $this->load->view('operator/header_operator', $data);
 		$this->load->view('operator/sidebar_operator');
@@ -155,6 +156,7 @@ class Operator extends CI_Controller {
 			'id_user'				=> $data_user[0]['id_user'],
 			'nip'					=> $data_user[0]['nip'],
 			'image'					=> $data_user[0]['image'],	
+			// 'password'				=> $data_user[0]['password'],	
 			'name'					=> $data_user[0]['name'],	
 			'email'					=> $data_user[0]['email'],	
 			'password'				=> $data_user[0]['password'],	
@@ -175,6 +177,7 @@ class Operator extends CI_Controller {
 			$id_user				= $this->input->post('id_user');
 			$nip					= $this->input->post('nip');
 			$image					= $this->input->post('image');
+			// $password				= password_hash($this->input->post('password',true), PASSWORD_DEFAULT);
 			$name					= $this->input->post('name');
 			$email					= $this->input->post('email');
 			$role_name				= $this->input->post('role_name');
@@ -185,6 +188,7 @@ class Operator extends CI_Controller {
 				'id_user'			=> $id_user,
 				'nip'				=> $nip,
 				'image'				=> $image,
+				// 'password'			=> $password,
 				'name'				=> $name,
 				'email'				=> $email,
 				'role_name'			=> $role_name,
@@ -260,7 +264,7 @@ class Operator extends CI_Controller {
 			unlink(".assets/img/profile/$row->image");
 			if($_FILES['image']['name'] != ""){
 				$config['upload_path']          = 'assets/img/profile';
-				$config['allowed_types']        = 'jpeg|jpg|png|pdf';
+				$config['allowed_types']        = 'jpeg|jpg|png|pdf|gif';
 				$config['max_size']             = '2000';
 				$config['remove_space']			= true;
 				$config['overwrite']			= true;
@@ -301,7 +305,26 @@ class Operator extends CI_Controller {
 					'unit_kerja'			=> $unit_kerja
 					);
 
-	  $this->User_model->updatedata('user',$data, array('id' => $kode));
+		$update_profil = $this->User_model->updatedata('user',$data, array('id_user' => $kode));
+		if($update_profil){
+			$this->session->unset_userdata('image');
+			$this->session->set_userdata('image',$data['image']);
+		}else{
+			echo 'gagal';
+		}
 	  redirect('Operator/profil');
 	}
+
+	public function halamanJurnal()
+	{
+		$data['judul'] 			= 'Halaman Jurnal Dosen';
+		$data['getDataJurnal']  = $this->Jurnal_model->getJudulJurnal();
+
+		$this->load->view('operator/header_operator', $data);
+		$this->load->view('operator/sidebar_operator');
+		$this->load->view('operator/halaman_jurnal', $data);
+		$this->load->view('templates/footer');
+	}
+
+
 }

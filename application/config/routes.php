@@ -53,6 +53,8 @@ $route['default_controller'] = 'Auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Dosen/halaman_jurnal/$1';
+$route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Dosen/tambahPenulis/$1';
+
 
 //===REVIEWER AREA===//
 $route['http://localhost/SI-JURNALTEKKOM/(:any)']['GET'] = 'Reviewer/halaman_jurnal/$1';
