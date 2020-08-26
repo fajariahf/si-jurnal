@@ -42,7 +42,7 @@ class Coba extends CI_Controller {
 	}
 
 	//UPDATE
-	function updatee(){
+	function update(){
 		$id = $this->input->post('edit_id',TRUE);
 		$package = $this->input->post('package_edit',TRUE);
 		$product = $this->input->post('product_edit',TRUE);

@@ -462,10 +462,9 @@ class Dosen extends CI_Controller {
 	
 	public function tambah_penulis_save()
 	{
-		
 		$data['id_jurnal']			= $this->input->post('id_jurnal',true);
 		$data['id_user']			= $this->input->post('id_user',true);
-		$data['id_user']			= $this->input->post('id_user',true);
+		//$data['id_user']			= $this->input->post('id_user',true);
 		$data['stat_penulis']		= $this->input->post('stat_penulis',true);
 		$data['judul_jurnal']		= $this->input->post('judul_jurnal',true);
 		$data['nama_jurnal']		= $this->input->post('nama_jurnal',true);
